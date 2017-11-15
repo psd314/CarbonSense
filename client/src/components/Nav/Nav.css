@@ -1,7 +1,21 @@
-.nav {
-	background-color: green;
+.navbar-brand {
+	color: #94f229;
+	font-family: 'Dosis', sans-serif;
+	font-size: 24pt;
+	
 }
 
-.nav a {
-	color: #eee;
+.navbar-collapse {
+	flex-grow: 0;
+}
+
+.nav-item {
+	color: #a4c653;
+	font-family: 'Dosis', sans-serif;
+	/*font-size: 24pt;*/
+}
+
+.btn {
+	margin-right: 15px;
+	color: red;
 }
