@@ -1,17 +1,18 @@
 import React, { Component } from "react";
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 
 class Profile extends Component {
 
 	render() {
 		return(
 			<div>
-				<h3>FirstName LastName</h3>
-				<h3>birfday</h3>
-				<h3>sex</h3>
-				<h3>Bio</h3>
-				<h1>Achievements</h1>
-				<h5>Lights Out - go a whole day with out using indoor lighting</h5>
-				<h5>Play it again Sam - Recycle at least 10 items in a day</h5>
+				<ProfileInfo 
+					username="bob sponja"
+					location="Pineapple, UnderTheSea"
+					gender="Dude"
+					highScore="135 krabby patties"
+					averageScore="75 krappy patties"
+				/>
 			</div>
 		);
 	}
