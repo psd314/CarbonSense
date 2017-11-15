@@ -1,7 +1,7 @@
 .navbar-brand {
 	color: #94f229;
 	font-family: 'Dosis', sans-serif;
-	font-size: 24pt;
+	font-size: 28pt;
 	
 }
 
@@ -11,11 +11,13 @@
 
 .nav-item {
 	color: #a4c653;
-	font-family: 'Dosis', sans-serif;
-	/*font-size: 24pt;*/
+	
 }
 
 .btn {
 	margin-right: 15px;
-	color: red;
+	color: black;
+	font-family: 'Dosis', sans-serif;
+	font-size: 16pt;
+	border-color: 
 }
