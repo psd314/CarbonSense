@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import LiquidFillGauge from 'react-liquid-gauge';
  
 class ProfileGraph extends Component {
+
     state = {
         value: 50
     };
@@ -101,5 +102,6 @@ class ProfileGraph extends Component {
         );
     }
 };
+
 
 export default ProfileGraph;
