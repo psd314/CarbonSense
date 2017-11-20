@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Nav.css";
-import { Link } from "react-router-dom";
 
 class Nav extends Component {
 
@@ -13,9 +12,9 @@ class Nav extends Component {
   			</button>
   			<div className="collapse navbar-collapse p-0" id="navbarNavAltMarkup">
     			<div className="navbar-nav">
-      				<a href="/dashboard"><button type="button" class="btn btn-outline-success">Dashboard <span className="sr-only">(current)</span></button></a>
-      				<a href="/profile"><button type="button" class="btn btn-outline-success">Profile <span className="sr-only">(current)</span></button></a>
-      				<a href="/leaderboard"><button type="button" class="btn btn-outline-success">Leaderboard <span className="sr-only">(current)</span></button></a>
+      				<a href="/dashboard"><button type="button" className="btn btn-outline-success">Dashboard <span className="sr-only">(current)</span></button></a>
+      				<a href="/profile"><button type="button" className="btn btn-outline-success">Profile <span className="sr-only">(current)</span></button></a>
+      				<a href="/leaderboard"><button type="button" className="btn btn-outline-success">Leaderboard <span className="sr-only">(current)</span></button></a>
     			</div>
   			</div>
 		</nav>

@@ -10,7 +10,7 @@ class ProfileInfo extends Component {
 			<div className="col-4">
 				<div>
 					<h2>Profile</h2>
-					<img style={{width: 75}} src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/1200px-Spongebob-squarepants.svg.png" />
+					<img style={{width: 75}} alt="sponge bob" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/1200px-Spongebob-squarepants.svg.png" />
 					<p>Username: {this.props.username}</p>
 					<p>Location: {this.props.location}</p>
 					<p>Gender: {this.props.gender}</p>
@@ -20,7 +20,7 @@ class ProfileInfo extends Component {
 				</div>
 			</div>			
 			<div className="col-8" >
-				<ProfileGraph url="https://i.stack.imgur.com/pjpPQ.jpg" width="750px" />
+				<ProfileGraph url="https://i.stack.imgur.com/pjpPQ.jpg" width="750px" alt="graph"/>
 			</div>
 		</div>
 		);
