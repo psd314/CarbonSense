@@ -9,4 +9,4 @@ const friendsSchema = new mongoose.Schema({
 
 const Friends = mongoose.model('Friends', friendsSchema); 
 
-module.export = Friends; 
+module.exports = Friends; 
