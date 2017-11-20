@@ -35,7 +35,10 @@ router.route('/leaderboard')
             .then(resultes => res.json(results))
     });
 
-
+router.route('/subscriptions')
+    .post((req, res) => {
+        console.log(req.body);
+    });
 //route to 
 
 module.exports = router;
