@@ -20,7 +20,9 @@ class ProfileInfo extends Component {
 				</div>
 			</div>			
 			<div className="col-8" >
-				<ProfileGraph url="https://i.stack.imgur.com/pjpPQ.jpg" width="750px" alt="graph"/>
+
+				<ProfileGraph  />
+
 			</div>
 		</div>
 		);

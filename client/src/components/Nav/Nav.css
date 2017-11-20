@@ -21,3 +21,9 @@
 	font-size: 16pt;
 	border-color: 
 }
+
+#nav {
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+}

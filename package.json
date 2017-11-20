@@ -19,6 +19,7 @@
   "homepage": "https://github.com/psd314/carbonTrack#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "d3-line-chart-plugin": "^0.4.1",
     "express": "^4.16.2",
     "mongoose": "^4.13.2",
     "routes": "^2.1.0"

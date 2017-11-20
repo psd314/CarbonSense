@@ -1,12 +1,11 @@
-
 import { color } from 'd3-color';
 import { interpolateRgb } from 'd3-interpolate';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import LiquidFillGauge from 'react-liquid-gauge';
+import "./DashboardGraph.css"
  
 class ProfileGraph extends Component {
-
     state = {
         value: 50
     };
@@ -39,7 +38,7 @@ class ProfileGraph extends Component {
         ];
  
         return (
-            <div>
+            <div className="DashboardGraph">
                 <LiquidFillGauge
                     style={{ margin: '0 auto' }}
                     width={radius * 2}
@@ -102,6 +101,5 @@ class ProfileGraph extends Component {
         );
     }
 };
-
 
 export default ProfileGraph;

@@ -1,0 +1,40 @@
+.Head {
+
+	
+	margin-top: 100px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 40pt;
+	color: white;
+	position: fixed;
+	z-index: 10;
+	background: transparent;
+	width: 98%;
+	border-bottom: 3px solid white;
+	background-image: url(https://i.ytimg.com/vi/jNT3O4NlSTo/maxresdefault.jpg);
+ 	background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
+.dashboard-questions {
+	width: 250pxs;
+	color: white;
+}
+
+.questions {
+	color: white;
+	justify-content: center;
+	margin-left: 60px;
+	margin-bottom: 20px;
+	/*margin-top: 100px;*/
+
+}
+
+#dropdownMenuButton {
+	margin-left: 50px;
+}
+
+.question-col {
+	margin-top: 175px;
+} 
