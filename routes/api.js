@@ -1,29 +1,52 @@
 const router = require('express').Router();
 const db = require('../models');
 
-//path to get the daily activities and post them to the page ?
-router.route('/fetch')
+//route to display all the challenges in the database (if we need this)
+router.route('/challenges')
     .get((req, res) => {
-        db.Challenges
+        console.log("this is a test");
+        db.Challenge
             .find()
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
-    }); 
+    })
 
-//route to add daily points to the user's profile
-router.route('/updatescore') 
+//route to add new User to the database
+router.route('/newuser')
     .post((req, res) => {
         db.User
-            .findOneAndUpdate({_id: req.params.id}, {$set: {score: req.params.score}})
+            .create(req.body)
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    })
+
+//route to add daily points to the user's profile
+//still need to work on how the points will be added and specified by date - - I may need some help here!
+router.route('/addpoints/:id') 
+    .post((req, res) => {
+        db.User
+            .findOneAndUpdate({_id: req.params.id}, {$set: {dailyPoints: req.params.dailyPoints}})
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
 
-//route to select and display the daily challenge
-router.route('/challenge') 
+//route to select and display the daily challenge for push notifications (?)
+router.route('/challenge/:id') 
+    .get((req, res) => {
+        db.Challenge
+            .findById({_id: req.params.id})
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    });
+
+//route to display streak of successful days (days below the target daily carbonPoints)
+router.route('/profile/:id')
     .get((req, res) => {
         db.User
-            .findById()
+            //do we need to specifically find the points? or just grab it from the results? **************************************************
+            .findById({ _id: req.params.id })
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
     });
 
 //route to display leaderboard 
@@ -31,9 +54,15 @@ router.route('/leaderboard')
     .get((req, res) => {
         db.User
             .find()
-            .sort({ score: -1 })
-            .then(resultes => res.json(results))
+            .sort({ totalScore: 1 })
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
     });
+
+//the following is to be added if we have time
+//route to follow specific users (save these users to friends database)
+//route to display only saved users to the leaderboard
+
 
 router.route('/subscriptions')
     .post((req, res) => {
