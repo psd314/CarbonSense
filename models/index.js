@@ -1,4 +1,4 @@
 module.exports = {
-    Challenges: require('./Challenges'), 
-    Users: require('./Users')
+    Challenge: require('./Challenges'), 
+    User: require('./Users')
 };
