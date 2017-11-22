@@ -22,19 +22,11 @@ const userSchema = new mongoose.Schema({
         type: Number,
         defualt: 100
     }, 
-    dailyPoints: {
-        //daily carbonPoints
-        type: Number
-    },
-    daysSuccessful: {
+    successStreak: {
         //add to this number for each successful day (day below guageTarget)
         type: Number
     },
     challengeScore: {
-        type: Number
-    }, 
-    totalScore: {
-        //total score by which leaderboard status is established?
         type: Number
     }
 }); 

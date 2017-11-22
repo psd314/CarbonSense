@@ -21,7 +21,6 @@ router.route('/newuser')
     })
 
 //route to add daily points to the user's profile
-//still need to work on how the points will be added and specified by date - - I may need some help here!
 router.route('/addpoints/:id') 
     .post((req, res) => {
         db.User
@@ -30,7 +29,7 @@ router.route('/addpoints/:id')
             .catch(err => res.status(500).json(err))
     });
 
-//route to select and display the daily challenge for push notifications (?)
+//route to get the daily challenge for push notifications (?)
 router.route('/challenge/:id') 
     .get((req, res) => {
         db.Challenge
@@ -39,12 +38,20 @@ router.route('/challenge/:id')
             .catch(err => res.status(500).json(err))
     });
 
-//route to display streak of successful days (days below the target daily carbonPoints)
-router.route('/profile/:id')
+//route to get streak of successful days (days below the target daily carbonPoints)
+router.route('/successStreak/:id')
     .get((req, res) => {
         db.User
-            //do we need to specifically find the points? or just grab it from the results? **************************************************
             .findById({ _id: req.params.id })
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    });
+
+//route to update successStreak 
+router.route('/successStreak/:id')
+    .post((req, res) {
+        db.User 
+            .findOneAndUpdate({_id: req.params.id }, {$set: {succssStreak: req.params.successStreak}})
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
@@ -54,7 +61,7 @@ router.route('/leaderboard')
     .get((req, res) => {
         db.User
             .find()
-            .sort({ totalScore: 1 })
+            .sort({ successStreak: 1 })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
