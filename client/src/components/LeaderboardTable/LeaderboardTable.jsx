@@ -6,7 +6,7 @@ class LeaderboardTable extends Component {
 		return(
 			<div className="container">
 				
-				<table class="table table-striped">
+				<table className="table table-striped">
 				 <thead>
 				    <tr>
 				      <th scope="col">Rank</th>

@@ -8,19 +8,25 @@ router.route('/fetch')
             .find()
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
-    }); 
+    });
 
 //route to add daily points to the user's profile
-router.route('/updatescore') 
+router.route('/updatescore')
     .post((req, res) => {
         db.User
-            .findOneAndUpdate({_id: req.params.id}, {$set: {score: req.params.score}})
+            .findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                $set: {
+                    score: req.params.score
+                }
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
 
 //route to select and display the daily challenge
-router.route('/challenge') 
+router.route('/challenge')
     .get((req, res) => {
         db.User
             .findById()
@@ -31,14 +37,26 @@ router.route('/leaderboard')
     .get((req, res) => {
         db.User
             .find()
-            .sort({ score: -1 })
-            .then(resultes => res.json(results))
+            .sort({
+                score: -1
+            })
+            .then(results => res.json(results))
     });
 
 router.route('/subscriptions')
     .post((req, res) => {
-        console.log(req.body);
+        console.log(req.body.endpoint);
+
+        db.Subscriptions
+            .findOneAndUpdate(
+                req.body
+            , {
+                new: true
+            }, {
+                upsert: true
+            }, function(error, doc) {
+                res.json("success");
+            });
     });
-//route to 
 
 module.exports = router;
