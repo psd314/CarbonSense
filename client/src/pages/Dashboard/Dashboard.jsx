@@ -5,7 +5,7 @@ class Dashboard extends Component {
 
 	render() {
 		return(
-			<div className="Container">
+			<div className="Container" >
 				<div className="col-8">
 					<div className="Head">
 						<h1>Dashboard</h1>
@@ -23,10 +23,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="100% Walk/Bike/Public Transit">Action</a>
-							    <a className="dropdown-item" href="50% Walk/Bike/Public Transit">Another action</a>
-							    <a className="dropdown-item" href="Carpool/Public Transit Only">Something else here</a>
-							    <a className="dropdown-item" href="Walk/Bike Only">Something else here</a>
+							    <a className="dropdown-item" href="100% Walk/Bike/Public Transit">100% Walk/Bike/Public Transit</a>
+							    <a className="dropdown-item" href="50% Walk/Bike/Public Transit">50% Walk/Bike/Public Transit</a>
+							    <a className="dropdown-item" href="Carpool/Public Transit Only">Carpool/Public Transit Only</a>
+							    <a className="dropdown-item" href="Walk/Bike Only">Walk/Bike Only</a>
 							  </div>
 							</div>
 							<h1 className="questions">Eating</h1>
@@ -35,10 +35,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Vegetarian/Vegan-Local/Humane-Non-Processed">Action</a>
-							    <a className="dropdown-item" href="Omnivore-Local/Humane-Non-Processed">Another action</a>
-							    <a className="dropdown-item" href="Vegetarian-Non-local/Processed">Something else here</a>
-							    <a className="dropdown-item" href="Omnivore-Non-Local/Processed">Something else here</a>
+							    <a className="dropdown-item" href="Vegetarian/Vegan-Local/Humane-Non-Processed">Vegetarian/Vegan-Local/Humane-Non-Processed</a>
+							    <a className="dropdown-item" href="Omnivore-Local/Humane-Non-Processed">Omnivore-Local/Humane-Non-Processed</a>
+							    <a className="dropdown-item" href="Vegetarian-Non-local/Processed">Vegetarian-Non-local/Processed</a>
+							    <a className="dropdown-item" href="Omnivore-Non-Local/Processed">Omnivore-Non-Local/Processed</a>
 							  </div>
 							  <h1 className="questions">Thermostat</h1>
 							<div className="dropdown">
@@ -46,10 +46,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Above 72 in Summer/Below 68 in Winter">Action</a>
-							    <a className="dropdown-item" href="Above 70 in Summer/Below 70 in Winter">Another action</a>
-							    <a className="dropdown-item" href="Above 68 in Summer/Below 72 in Winter">Something else here</a>
-							    <a className="dropdown-item" href="Below 68 in Summer/Above 72 in Winter">Something else here</a>
+							    <a className="dropdown-item" href="Above 72 in Summer/Below 68 in Winter">Above 72 in Summer/Below 68 in Winter</a>
+							    <a className="dropdown-item" href="Above 70 in Summer/Below 70 in Winter">Above 70 in Summer/Below 70 in Winter</a>
+							    <a className="dropdown-item" href="Above 68 in Summer/Below 72 in Winter">Above 68 in Summer/Below 72 in Winter</a>
+							    <a className="dropdown-item" href="Below 68 in Summer/Above 72 in Winter">Below 68 in Summer/Above 72 in Winter</a>
 							  </div>
 							</div>
 							<h1 className="questions">Grocery Shopping</h1>
@@ -58,10 +58,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Brought My Own Bags">Action</a>
-							    <a className="dropdown-item" href="Used Paper Bags">Another action</a>
-							    <a className="dropdown-item" href="Used Plastic Bags">Something else here</a>
-							    <a className="dropdown-item" href="Had my Groceries Delivered ">Something else here</a>
+							    <a className="dropdown-item" href="Brought My Own Bags">Brought My Own Bags</a>
+							    <a className="dropdown-item" href="Used Paper Bags">Used Paper Bags</a>
+							    <a className="dropdown-item" href="Used Plastic Bags">Used Plastic Bags</a>
+							    <a className="dropdown-item" href="Had my Groceries Delivered ">Had my Groceries Delivered </a>
 							  </div>
 							</div>
 							<h1 className="questions">Groceries</h1>
@@ -70,10 +70,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="All Fresh meat and Produce">Action</a>
-							    <a className="dropdown-item" href="50% PrePackaged">Another action</a>
-							    <a className="dropdown-item" href="100% PrePackaged">Something else here</a>
-							    <a className="dropdown-item" href="No Groceries - I only eat out">Something else here</a>
+							    <a className="dropdown-item" href="All Fresh meat and Produce">All Fresh meat and Produce</a>
+							    <a className="dropdown-item" href="50% PrePackaged">50% PrePackaged</a>
+							    <a className="dropdown-item" href="100% PrePackaged">100% PrePackaged</a>
+							    <a className="dropdown-item" href="No Groceries - I only eat out">No Groceries - I only eat out</a>
 							  </div>
 							</div>
 							<h1 className="questions">Bathing</h1>
@@ -82,10 +82,9 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="5 Mins or Less/Cold to Warm">Action</a>
-							    <a className="dropdown-item" href="5 Mins or Less/Hot">Another action</a>
-							    <a className="dropdown-item" href="5 - 10 Mins/Hot">Something else here</a>
-							    <a className="dropdown-item" href="10+ Mins/Hot">Something else here</a>
+							    <a className="dropdown-item" href="5 Mins or Less/Cold to Warm">5 Mins or Less/Cold to Warm</a>
+							    <a className="dropdown-item" href="5 - 10 Mins/Hot">5 - 10 Mins/Hot</a>
+							    <a className="dropdown-item" href="10+ Mins/Hot">10+ Mins/Hot</a>
 							  </div>
 							</div>
 							<h1 className="questions">Device Charging</h1>
@@ -94,10 +93,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Chargers unplugged when not in use">Action</a>
-							    <a className="dropdown-item" href="Chargers left plugged into wall always">Another action</a>
-							    <a className="dropdown-item" href="Charge items even if they are not dead">Something else here</a>
-							    <a className="dropdown-item" href="If I'm not using it, I'm charging it">Something else here</a>
+							    <a className="dropdown-item" href="Chargers unplugged when not in use">Chargers unplugged when not in use</a>
+							    <a className="dropdown-item" href="Chargers left plugged into wall always">Chargers left plugged into wall always</a>
+							    <a className="dropdown-item" href="Charge items even if they are not dead">Charge items even if they are not dead</a>
+							    <a className="dropdown-item" href="If I'm not using it, I'm charging it">If I'm not using it, I'm charging it</a>
 							  </div>
 							</div>
 							<h1 className="questions">Energy Conservation</h1>
@@ -106,10 +105,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Only lights and appliances in use are turned on">Action</a>
-							    <a className="dropdown-item" href="Lights and appliances on timers">Another action</a>
-							    <a className="dropdown-item" href="Some lights and appliances left on for safety">Something else here</a>
-							    <a className="dropdown-item" href="Lights and appliances are always on all over">Something else here</a>
+							    <a className="dropdown-item" href="Only lights and appliances in use are turned on">Only lights and appliances in use are turned on</a>
+							    <a className="dropdown-item" href="Lights and appliances on timers">Lights and appliances on timers</a>
+							    <a className="dropdown-item" href="Some lights and appliances left on for safety">Some lights and appliances left on for safety</a>
+							    <a className="dropdown-item" href="Lights and appliances are always on all over">Lights and appliances are always on all over</a>
 							  </div>
 							</div>
 							<h1 className="questions">Recycling</h1>
@@ -118,10 +117,10 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Recycle/reuse everything that can be">Action</a>
-							    <a className="dropdown-item" href="Recycle everything, but don't reuse">Another action</a>
-							    <a className="dropdown-item" href="Recycle paper and plastic only">Something else here</a>
-							    <a className="dropdown-item" href="I do not recycle...ever">Something else here</a>
+							    <a className="dropdown-item" href="Recycle/reuse everything that can be">Recycle/reuse everything that can be</a>
+							    <a className="dropdown-item" href="Recycle everything, but don't reuse">Recycle everything, but don't reuse</a>
+							    <a className="dropdown-item" href="Recycle paper and plastic only">Recycle paper and plastic only</a>
+							    <a className="dropdown-item" href="I do not recycle...ever">I do not recycle...ever</a>
 							  </div>
 							</div>
 							<h1 className="questions">Last one</h1>
@@ -130,9 +129,9 @@ class Dashboard extends Component {
 							    Options...
 							  </button>
 							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="100% Walk/Bike/Public Transit">Action</a>
-							    <a className="dropdown-item" href="50% Walk/Bike/Public Transit">Another action</a>
-							    <a className="dropdown-item" href="Carpool/Public Transit Only">Something else here</a>
+							    <a className="dropdown-item" href="100% Walk/Bike/Public Transit">100% Walk/Bike/Public Transit</a>
+							    <a className="dropdown-item" href="50% Walk/Bike/Public Transit">50% Walk/Bike/Public Transit</a>
+							    <a className="dropdown-item" href="Carpool/Public Transit Only">Carpool/Public Transit Only</a>
 							    <a className="dropdown-item" href="Walk/Bike Only">Something else here</a>
 							  </div>
 							</div>

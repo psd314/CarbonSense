@@ -1,9 +1,9 @@
 // subscribe/unsubscribe user
 // save subscription object to mongo
-//
+// set up admin page
+// loop through db and send push to all subscribed endpoints
 
-var app = (function() {
-    'use strict';
+// var app = (function() {
 
     var isSubscribed = false;
     var swRegistration = null;
@@ -30,17 +30,14 @@ var app = (function() {
     }
 
     // TODO 2.2 - request permission to show notifications
-
-    console.log("log out permission:", Notification.permission);
-
     Notification.requestPermission(function(status) {
         console.log('Notification permission status:', status);
-        if (status === "granted") {
-            subscribeUser();
-        }
+        // if (status === "granted") {
+        //     subscribeUser();
+        // }
     });
 
-    initializeUI();
+    // initializeUI();
     // admin page sends to route on server, server sends push to ??
     // fires node/main.js???
     function displayNotification() {
@@ -79,10 +76,10 @@ var app = (function() {
 
         swRegistration.pushManager.getSubscription()
             .then(function(subscription) {
-
+                // if no subscription object found subscription === null
                 isSubscribed = (subscription !== null);
 
-                // updateSubscriptionOnServer(subscription);
+                updateSubscriptionOnServer(subscription);
 
                 if (isSubscribed) {
                     console.log('User IS subscribed.');
@@ -103,8 +100,8 @@ var app = (function() {
             .then(function(subscription) {
                 console.log('User is subscribed:', subscription);
                 const subscriptionObj = JSON.stringify(subscription);
-                console.log(subscriptionObj);
-                // updateSubscriptionOnServer(subscription);
+                
+                updateSubscriptionOnServer(subscription);
                 isSubscribed = true;
             })
             .catch(function(err) {
@@ -138,19 +135,29 @@ var app = (function() {
     }
 
     function updateSubscriptionOnServer(subscription) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.open('POST', '/subscriptions', true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log('post success');
+            }
+        };        
+        xhttp.send(JSON.stringify(subscription));
+        
         // Here's where you would send the subscription to the application server
 
-        var subscriptionJson = document.querySelector('.js-subscription-json');
-        var endpointURL = document.querySelector('.js-endpoint-url');
-        var subAndEndpoint = document.querySelector('.js-sub-endpoint');
+        // var subscriptionJson = document.querySelector('.js-subscription-json');
+        // var endpointURL = document.querySelector('.js-endpoint-url');
+        // var subAndEndpoint = document.querySelector('.js-sub-endpoint');
 
-        if (subscription) {
-            subscriptionJson.textContent = JSON.stringify(subscription);
-            endpointURL.textContent = subscription.endpoint;
-            subAndEndpoint.style.display = 'block';
-        } else {
-            subAndEndpoint.style.display = 'none';
-        }
+        // if (subscription) {
+        //     subscriptionJson.textContent = JSON.stringify(subscription);
+        //     endpointURL.textContent = subscription.endpoint;
+        //     subAndEndpoint.style.display = 'block';
+        // } else {
+        //     subAndEndpoint.style.display = 'none';
+        // }
     }
 
 
@@ -170,7 +177,7 @@ var app = (function() {
         return outputArray;
     }
 
-})();
+// })();
 
 
 

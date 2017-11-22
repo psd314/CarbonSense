@@ -16,7 +16,7 @@ class Nav extends Component {
       				<a href="/profile"><button type="button" className="btn btn-outline-success">Profile <span className="sr-only">(current)</span></button></a>
       				<a href="/leaderboard"><button type="button" className="btn btn-outline-success">Leaderboard <span className="sr-only">(current)</span></button></a>
     			</div>
-  			</div>
+  			</div >
 		</nav>
 		);
 	}
