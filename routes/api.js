@@ -9,6 +9,7 @@ router.route('/challenges')
             .find()
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
+
     })
 
 //route to add new User to the database
@@ -39,6 +40,7 @@ router.route('/challenge/:id')
             .catch(err => res.status(500).json(err))
     });
 
+
 //route to display streak of successful days (days below the target daily carbonPoints)
 router.route('/profile/:id')
     .get((req, res) => {
@@ -66,8 +68,18 @@ router.route('/leaderboard')
 
 router.route('/subscriptions')
     .post((req, res) => {
-        console.log(req.body);
+        console.log(req.body.endpoint);
+
+        db.Subscriptions
+            .findOneAndUpdate(
+                req.body
+            , {
+                new: true
+            }, {
+                upsert: true
+            }, function(error, doc) {
+                res.json("success");
+            });
     });
-//route to 
 
 module.exports = router;
