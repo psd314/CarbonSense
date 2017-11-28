@@ -7,7 +7,6 @@ import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 import Login from './pages/Login/Login.jsx';
 import Admin from './pages/Admin/Admin.jsx';
-import axios from 'axios';
 require('./pushNotifications.js');
 require('./service-worker.js');
 
@@ -15,6 +14,7 @@ require('./service-worker.js');
 class App extends Component {
 
   
+
 
   render() {
     return (
