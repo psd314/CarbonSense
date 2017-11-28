@@ -77,9 +77,9 @@ const challengeSeed = [
   }
 ];
 
-db.Challenges
+db.Challenge
   .remove({})
-  .then(() => db.Challenges.collection.insertMany(challengeSeed))
+  .then(() => db.Challenge.collection.insertMany(challengeSeed))
   .then(data => {
     console.log(data.insertedIds.length + " records inserted!");
     process.exit(0);

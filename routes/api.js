@@ -6,13 +6,13 @@ const LocalStrategy = require('passport-local').Strategy;
 //route to display all the challenges in the database (if we need this)
 router.route('/challenges')
     .get((req, res) => {
-        console.log("this is a test");
+
         db.Challenge
             .find()
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
 
-    })
+    });
 
 //route to add new User to the database
 router.route('/newuser')
@@ -21,11 +21,28 @@ router.route('/newuser')
             .create(req.body)
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
+    });
+
+//route to update goal max gauge
+router.route('/gaugeTarget/:id') 
+    .put((req, res) => {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {$set: { gaugeTarget: req.params.gaugeTarget }})
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
     })
 
+//route to get max gauge number
+router.route('/gaugeTarget/:id') 
+    .get((req, res) => {
+        db.User
+            .findById({ _id: req.params.id })
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    });
+
 //route to add daily points to the user's profile
-//still need to work on how the points will be added and specified by date - - I may need some help here!
-router.route('/addpoints/:id')
+router.route('/addpoints/:id') 
     .post((req, res) => {
         db.User
             .findOneAndUpdate({
@@ -39,8 +56,8 @@ router.route('/addpoints/:id')
             .catch(err => res.status(500).json(err))
     });
 
-//route to select and display the daily challenge for push notifications (?)
-router.route('/challenge/:id')
+//route to get the daily challenge for push notifications (?)
+router.route('/challenge/:id') 
     .get((req, res) => {
         db.Challenge
             .findById({
@@ -50,31 +67,43 @@ router.route('/challenge/:id')
             .catch(err => res.status(500).json(err))
     });
 
-
-//route to display streak of successful days (days below the target daily carbonPoints)
-router.route('/profile/:id')
+//route to get streak of successful days (days below the target daily carbonPoints)
+router.route('/successStreak/:id')
     .get((req, res) => {
         db.User
-            //do we need to specifically find the points? or just grab it from the results? **************************************************
-            .findById({
-                _id: req.params.id
-            })
+            .findById({ _id: req.params.id })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
 
-//route to display leaderboard 
-router.route('/leaderboard')
+//route to update successStreak 
+router.route('/successStreak/:id')
+    .put((req, res) => {
+        db.User 
+            .findOneAndUpdate({ _id: req.params.id }, {$set: {succssStreak: req.params.successStreak}})
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    });
+
+//route to display leaderboard for success streak
+router.route('/leaderboard/successstreak')
     .get((req, res) => {
         db.User
             .find()
-            .sort({
-                totalScore: 1
-            })
+            .sort({ successStreak: 1 })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
 
+//route to display challenges leaderboard
+router.route('/leaderboard/challenges')
+    .get((req, res) => {
+        db.User
+            .find()
+            .sort({ challengeScore: 1 })
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    })
 
 
 //the following is to be added if we have time
