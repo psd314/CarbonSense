@@ -88,7 +88,7 @@ router.route('/login')
         //will need to hash and salt for production, bcrypt???
         const password = req.body.password;
 
-        
+        console.log('dir', __dirname);
         res.json("login route worked");
     });
 
