@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
+import ChartLine from '../../components/LineGraph/LineGraph.jsx';
+import rcl from "react-chart-line";
 
 class Profile extends Component {
+
 
 	render() {
 		return(
