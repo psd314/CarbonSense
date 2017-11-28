@@ -24,10 +24,12 @@ const userSchema = new mongoose.Schema({
     }, 
     successStreak: {
         //add to this number for each successful day (day below guageTarget)
-        type: Number
+        type: Number,
+        default: 0
     },
     challengeScore: {
-        type: Number
+        type: Number,
+        default: 0
     }
 }); 
 
