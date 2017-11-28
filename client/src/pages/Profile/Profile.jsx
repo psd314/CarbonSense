@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 
+
 class Profile extends Component {
+
 
 	render() {
 		return(
