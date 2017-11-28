@@ -105,7 +105,6 @@ router.route('/leaderboard/challenges')
             .catch(err => res.status(500).json(err))
     })
 
-
 //the following is to be added if we have time
 //route to follow specific users (save these users to friends database)
 //route to display only saved users to the leaderboard
