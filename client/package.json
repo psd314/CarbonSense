@@ -2,10 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "localhost:3001",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "axios": "^0.17.1",
     "react": "^16.1.1",
+    "react-chart-line": "^1.0.15",
     "react-dom": "^16.1.1",
     "react-liquid-gauge": "^1.2.3",
     "react-router-dom": "^4.2.2",

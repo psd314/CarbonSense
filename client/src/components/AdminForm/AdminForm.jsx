@@ -6,7 +6,7 @@ class AdminForm extends Component {
 		return(
 			<div>
 
-			<div className='row' style={{paddingTop: 200}}>
+			<div className='row pushBox'>
 				<div className='col-8 offset-2'>
 					<h3>Admin Form</h3>
 				</div>

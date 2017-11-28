@@ -1,6 +1,24 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 class Login extends Component {
+
+	state = {
+		username: '',
+		password: ''
+	}
+
+	componentDidMount() {
+
+	}
+	
+	login() {
+		axios
+			.post('/login', {username: this.state.username, password: this.state.password})
+			.then(res => {console.log('res:', res)})
+			.catch(err => console.error(err));
+	}
+
 	render() {
 		return(
 			<div>
@@ -15,8 +33,10 @@ class Login extends Component {
 				    		<div className="input-group">
 							  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
 							  	value={this.props.value}
-							  	onChange={this.props.handleInputChange}					
-							  	name="topic"/>
+							  	onChange={event => this.setState({username: event.target.value})}					
+							  	name="topic"
+							  	placeholder="email"
+							  	value="mail@mail.com"/>
 							</div>
 				    	</div>
 				    </div>
@@ -31,14 +51,18 @@ class Login extends Component {
 				    <div className="row">
 				    	<div className="col-4 offset-4">
 				    		<div className="input-group">
-							  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
+							  <input type="password" className="form-control" placeholder="" aria-describedby="basic-addon1" 
 							  	value={this.props.value}
-							  	onChange={this.props.handleInputChange}					
-							  	name="topic"/>
+							  	onChange={event => this.setState({password: event.target.value})}					
+							  	name="topic"
+							  	placeholder="password"
+							  	value="admin"/>
 							</div>
 				    	</div>
 				    </div>
 			    </div>
+			    <button type="button" className="btn btn-secondary" onClick={()=> this.login()}>Login</button><a href="#" style={{color:"orange",
+					fontSize: 30, fontWeight: "bold"}}>Sign Up</a>
 			</div>
 		);
 	}
