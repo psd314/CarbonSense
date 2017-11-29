@@ -4,7 +4,7 @@ import axios from 'axios';
 class Login extends Component {
 
 	state = {
-		username: '',
+		name: '',
 		password: ''
 	}
 
@@ -34,7 +34,7 @@ class Login extends Component {
 							  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
 							  	value={this.props.value}
 							  	onChange={event => this.setState({username: event.target.value})}					
-							  	name="topic"
+							  	name="name"
 							  	placeholder="email"
 							  	value="mail@mail.com"/>
 							</div>
@@ -54,14 +54,14 @@ class Login extends Component {
 							  <input type="password" className="form-control" placeholder="" aria-describedby="basic-addon1" 
 							  	value={this.props.value}
 							  	onChange={event => this.setState({password: event.target.value})}					
-							  	name="topic"
-							  	placeholder="password"
+							  	name="password"
+							  	placeholder="********"
 							  	value="admin"/>
 							</div>
 				    	</div>
 				    </div>
 			    </div>
-			    <button type="button" className="btn btn-secondary" onClick={()=> this.login()}>Login</button><a href="#" style={{color:"orange",
+			    <button type="button" className="btn btn-secondary" onClick={()=> this.login()}>Login</button><a href="/signup" style={{color:"orange",
 					fontSize: 30, fontWeight: "bold"}}>Sign Up</a>
 			</div>
 		);

@@ -4,9 +4,11 @@ class Button extends Component {
 	
 	render() {
 		return (
-			<button className="btn btn-lg btn-primary" 
+			
+			<button className="btn btn-warning" 
 			onClick={this.props.handleOnClick}
 			to={this.props.to}>{this.props.buttonName}</button>
+			
 		);	
 	}
 }

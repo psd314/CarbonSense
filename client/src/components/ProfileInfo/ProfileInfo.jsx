@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Button/Button.jsx';
 import ProfileGraph from '../ProfileGraph/ProfileGraph.jsx';
 
+
 class ProfileInfo extends Component {
 	
 	render() {

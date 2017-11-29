@@ -7,14 +7,12 @@ import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 import Login from './pages/Login/Login.jsx';
 import Admin from './pages/Admin/Admin.jsx';
+import Signup from './pages/Signup/Signup.jsx';
 require('./pushNotifications.js');
 require('./service-worker.js');
 
 
 class App extends Component {
-
-  
-
 
   render() {
     return (
@@ -27,6 +25,7 @@ class App extends Component {
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/leaderboard" component={Leaderboard} /> 
             <Route exact path="/profile" component={Profile} /> 
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/admin" component={Admin} /> 
             <Route component={Login} />       
           </Switch>
