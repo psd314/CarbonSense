@@ -23,6 +23,17 @@ router.route('/newuser')
             .catch(err => res.status(500).json(err))
     });
 
+//route to get the daily challenge for push notifications (?)
+router.route('/user/:id') 
+    .get((req, res) => {
+        db.User
+            .findById({
+                _id: req.params.id
+            })
+            .then(results => res.json(results))
+            .catch(err => res.status(500).json(err))
+    });
+
 //route to update goal max gauge
 router.route('/gaugeTarget/:id') 
     .put((req, res) => {
@@ -90,7 +101,7 @@ router.route('/leaderboard/successstreak')
     .get((req, res) => {
         db.User
             .find()
-            .sort({ successStreak: 1 })
+            .sort({ successStreak: -1 })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
