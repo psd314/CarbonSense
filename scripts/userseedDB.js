@@ -14,20 +14,29 @@ const userSeed = [
   {
       name: "Bob Sponge",
       password: "underTheSea",
+      birthday: "1/1/1999",
       gender: "undefined",
       location: "under the sea", 
+      successStreak: 5,
+      challengeScore: 18
   }, 
   {
     name: "Philly",
     password: "jujitsu",
-    gender: "furry",
-    location: "Raleigh, NC", 
+    birthday: "3/15/1980",
+    gender: "male",
+    location: "Raleigh, NC",
+    successStreak: 4 ,
+    challengeScore: 28
   }, 
   {
       name: "Julianne",
       password: "ilovepecans", 
-      gender: "trans", 
-      location: "Raleigh, NC"
+      birthday: "1/18/1987",
+      gender: "female", 
+      location: "Raleigh, NC",
+      successStreak: 6,
+      challengeScore: 15
   }
 ];
 

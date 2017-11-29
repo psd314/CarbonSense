@@ -14,8 +14,8 @@ class ProfileInfo extends Component {
 					<p>Username: {this.props.username}</p>
 					<p>Location: {this.props.location}</p>
 					<p>Gender: {this.props.gender}</p>
-					<p>High Score: {this.props.highScore}</p>
-					<p>Average Score: {this.props.averageScore}</p>
+					<p>Success Streak: {this.props.successStreak}</p>
+					<p>Challenge Score: {this.props.challengeScore}</p>
 					<Button buttonName="Edit" />
 				</div>
 			</div>			
