@@ -8,8 +8,7 @@ import Profile from './pages/Profile/Profile.jsx';
 import Login from './pages/Login/Login.jsx';
 import Admin from './pages/Admin/Admin.jsx';
 import Signup from './pages/Signup/Signup.jsx';
-require('./pushNotifications.js');
-require('./service-worker.js');
+
 
 
 class App extends Component {

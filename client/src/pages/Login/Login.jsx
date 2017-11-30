@@ -5,18 +5,34 @@ class Login extends Component {
 
 	state = {
 		name: '',
-		password: ''
+		password: '',
+		error: ''
 	}
 
 	componentDidMount() {
 
 	}
 	
-	login() {
-		axios
-			.post('/login', {username: this.state.username, password: this.state.password})
-			.then(res => {console.log('res:', res)})
-			.catch(err => console.error(err));
+	login = (event) => {
+		
+		event.preventDefault();		
+			axios
+				.post('/login', {name: this.state.name, password: this.state.password})
+				.then(res => {
+					console.log(res.data);
+					if(res.data === "exists") {
+						this.setState({error: "Logging In"})
+						setTimeout( () => {						
+							this.props.history.push("/dashboard");
+							}, 1500);
+					} else {
+						this.setState({error: "Loggin in..."})
+						setTimeout( () => {						
+							this.props.history.push("/dashboard");
+						}, 1500);					
+					}
+				})
+				.catch(err => console.error(err));		
 	}
 
 	render() {
@@ -61,8 +77,9 @@ class Login extends Component {
 				    	</div>
 				    </div>
 			    </div>
-			    <button type="button" className="btn btn-secondary" onClick={()=> this.login()}>Login</button><a href="/signup" style={{color:"orange",
+			    <button type="button" className="btn btn-secondary" onClick={this.login}>Login</button><a href="/signup" style={{color:"orange",
 					fontSize: 30, fontWeight: "bold"}}>Sign Up</a>
+				<h3 style={{color: "orange"}}><span>{this.state.error}</span></h3>
 			</div>
 		);
 	}
