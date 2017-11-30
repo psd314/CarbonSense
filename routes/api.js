@@ -1,9 +1,35 @@
+import Validator from 'validator';
+import isEmpty from 'lodash/isEmpty';
 const router = require('express').Router();
 const db = require('../models');
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy;
 
 //route to display all the challenges in the database (if we need this)
+
+function validateInput(data) {
+    let errors = {};
+
+    if (isEmpty(data.name)) {
+        errors.name = 'Email field is required';
+    }
+    if (!isEmpty(data.name) && !Validator.isEmail(data.name)) {
+        errors.name = 'Please enter a valid email address';
+    }
+    if (isEmpty(data.password)) {
+        errors.password = 'Password field is required';
+    }
+    if (isEmpty(data.confirmPassword)) {
+        errors.confirmPassword = 'Confirm Password field is required';
+    }
+    if (!isEmpty(data.password) && !isEmpty(data.confirmPassword) && !Validator.equals(data.password, data.confirmPassword)) {
+        errors.confirmPassword = 'Passwords must match exactly';
+    }
+
+    return {
+        errors,
+        isValid: isEmpty(errors)
+    }
+}
+
 router.route('/challenges')
     .get((req, res) => {
 
@@ -17,23 +43,32 @@ router.route('/challenges')
 //route to add new User to the database
 router.route('/newuser')
     .post((req, res) => {
-
-        db.User
-            .find({
-                name: req.body.name
-            })
-            .then(user => {
-                if (user.length === 0) {
-                    db.User
-                        .create({
-                            name: req.body.name,
-                            password: req.body.password
-                        })
-                        .then(resp => res.json(resp))
-                } else res.json("exists");
-
-            })
-            .catch(error => res.status(500).json(err))
+        const {
+            errors,
+            isValid
+        } = validateInput(req.body);
+        if (isValid) {
+            db.User
+                .find({
+                    name: req.body.name
+                })
+                .then(user => {
+                    if (user.length === 0) {
+                        db.User
+                            .create({
+                                name: req.body.name,
+                                password: req.body.password
+                            })
+                            .then(resp => res.json(resp))
+                    } else {
+                        errors.name = "This email is already in use"
+                        res.status(400).json(errors);
+                    }
+                })
+                .catch(error => res.status(500).json(err))
+        } else {
+            res.status(400).json(errors);
+        }
     });
 
 //route to get the daily challenge for push notifications (?)
@@ -167,7 +202,10 @@ router.route('/login')
         // monitor state for token
 
         db.User
-            .find({name: username, password: password})
+            .find({
+                name: username,
+                password: password
+            })
             .then(results => res.json("exists"))
             .catch(err => res.status(500).json(err))
     });
