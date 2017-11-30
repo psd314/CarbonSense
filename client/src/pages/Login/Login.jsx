@@ -36,7 +36,7 @@ class Login extends Component {
 							  	onChange={event => this.setState({username: event.target.value})}					
 							  	name="name"
 							  	placeholder="email"
-							  	value="mail@mail.com"/>
+							  	/>
 							</div>
 				    	</div>
 				    </div>
@@ -56,7 +56,7 @@ class Login extends Component {
 							  	onChange={event => this.setState({password: event.target.value})}					
 							  	name="password"
 							  	placeholder="********"
-							  	value="admin"/>
+							  	/>
 							</div>
 				    	</div>
 				    </div>

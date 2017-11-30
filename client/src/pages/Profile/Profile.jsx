@@ -12,7 +12,7 @@ componentDidMount() {
 	}
 
 	loadUser = () => {
-		axios.get("/user/5a1e114a8f12de168a10ac40")
+		axios.get("/user/5a1f3cc4f36b011c04114055")
 			.then(res => {
 				this.setState({ user: res.data })
 				console.log(this.state)
@@ -24,8 +24,10 @@ componentDidMount() {
 
 	render() {
 		return(
-			<div>
+			<div style={{paddingTop: 150}}>
 				<ProfileInfo 
+					alttext={this.state.user.name}
+					src={this.state.user.image}
 					username={this.state.user.name}
 					location={this.state.user.location}
 					gender={this.state.user.gender}

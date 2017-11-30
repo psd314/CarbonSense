@@ -18,6 +18,9 @@ const userSchema = new mongoose.Schema({
     location: {
         type: String
     },
+    image: {
+        type: String
+    },
     gaugeTarget: {
         type: Number,
         defualt: 100

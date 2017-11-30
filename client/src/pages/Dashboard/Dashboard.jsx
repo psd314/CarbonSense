@@ -17,124 +17,109 @@ class Dashboard extends Component {
 				</div>
 					<div className="row">
 						<div className="col-6 question-col">
-							<h1 className="questions">Transportation</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="100% Walk/Bike/Public Transit">100% Walk/Bike/Public Transit</a>
-							    <a className="dropdown-item" href="50% Walk/Bike/Public Transit">50% Walk/Bike/Public Transit</a>
-							    <a className="dropdown-item" href="Carpool/Public Transit Only">Carpool/Public Transit Only</a>
-							    <a className="dropdown-item" href="Walk/Bike Only">Walk/Bike Only</a>
-							  </div>
+														
+							<div className="form-group">
+							<h1 className="questions">Transportation</h1>						  
+							    <select className="form-control">
+									<option value="1">100% Walk/Bike/Public Transit</option>
+							    <option value="5">50% Walk/Bike/Public Transit</option>
+							    <option value="10">Carpool/Public Transit Only</option>
+							    <option value="15">Walk/Bike Only</option>
+							  	</select>								
 							</div>
-							<h1 className="questions">Eating</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Vegetarian/Vegan-Local/Humane-Non-Processed">Vegetarian/Vegan-Local/Humane-Non-Processed</a>
-							    <a className="dropdown-item" href="Omnivore-Local/Humane-Non-Processed">Omnivore-Local/Humane-Non-Processed</a>
-							    <a className="dropdown-item" href="Vegetarian-Non-local/Processed">Vegetarian-Non-local/Processed</a>
-							    <a className="dropdown-item" href="Omnivore-Non-Local/Processed">Omnivore-Non-Local/Processed</a>
-							  </div>
-							  <h1 className="questions">Thermostat</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Above 72 in Summer/Below 68 in Winter">Above 72 in Summer/Below 68 in Winter</a>
-							    <a className="dropdown-item" href="Above 70 in Summer/Below 70 in Winter">Above 70 in Summer/Below 70 in Winter</a>
-							    <a className="dropdown-item" href="Above 68 in Summer/Below 72 in Winter">Above 68 in Summer/Below 72 in Winter</a>
-							    <a className="dropdown-item" href="Below 68 in Summer/Above 72 in Winter">Below 68 in Summer/Above 72 in Winter</a>
-							  </div>
+
+							<div className="form-group">
+							<h1 className="questions">Eating</h1>							  
+							    <select className="form-control">
+										<option value="1">I ate only Vegan/Vegetarian from local organic farms</option>
+										<option value="5">I ate some meat, but everything was local and organic</option>
+										<option value="10">I had some organic or local option but mixed with some processed foods</option>
+										<option value="15">I indulged in fast food and it was great!</option>
+							  	</select>
+															 
+							<div className="form-group">
+							<h1 className="questions">Thermostat</h1>
+							    <select className="form-control">
+									<option value="1">Above 72 in Summer/Below 68 in Winter</option>
+							    <option value="5">Above 70 in Summer/Below 70 in Winter</option>
+							    <option value="10">Above 68 in Summer/Below 72 in Winter</option>
+							    <option value="15">Below 68 in Summer/Above 72 in Winter</option>
+							  	</select>
+								
 							</div>
 							<h1 className="questions">Grocery Shopping</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Brought My Own Bags">Brought My Own Bags</a>
-							    <a className="dropdown-item" href="Used Paper Bags">Used Paper Bags</a>
-							    <a className="dropdown-item" href="Used Plastic Bags">Used Plastic Bags</a>
-							    <a className="dropdown-item" href="Had my Groceries Delivered ">Had my Groceries Delivered </a>
-							  </div>
+							<div className="form-group">
+							    <select className="form-control">
+									<option value="1">Brought My Own Bags</option>
+							    <option value="5">Used Paper Bags</option>
+							    <option value="10">Used Plastic Bags</option>
+							    <option value="15">Had my Groceries Delivered </option>
+							  	</select>							
 							</div>
+
+							<div className="form-group">
 							<h1 className="questions">Groceries</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="All Fresh meat and Produce">All Fresh meat and Produce</a>
-							    <a className="dropdown-item" href="50% PrePackaged">50% PrePackaged</a>
-							    <a className="dropdown-item" href="100% PrePackaged">100% PrePackaged</a>
-							    <a className="dropdown-item" href="No Groceries - I only eat out">No Groceries - I only eat out</a>
-							  </div>
+							    <select className="form-control">
+										<option value="1">All Fresh meat and Produce</option>
+										<option value="5">50% PrePackaged</option>
+										<option value="10">100% PrePackaged</option>
+										<option value="15">No Groceries - I only eat out</option>
+							  	</select>
 							</div>
-							<h1 className="questions">Bathing</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="5 Mins or Less/Cold to Warm">5 Mins or Less/Cold to Warm</a>
-							    <a className="dropdown-item" href="5 - 10 Mins/Hot">5 - 10 Mins/Hot</a>
-							    <a className="dropdown-item" href="10+ Mins/Hot">10+ Mins/Hot</a>
-							  </div>
+
+							
+							<div className="form-group">	
+							<h1 className="questions">Bathing</h1>						  
+							    <select className="form-control">
+									<option value="1">5 Mins or Less/Cold to Warm</option>
+							    <option value="5">5 - 10 Mins/Hot</option>
+							    <option value="10">10+ Mins/Hot</option>
+									</select>							 
 							</div>
-							<h1 className="questions">Device Charging</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Chargers unplugged when not in use">Chargers unplugged when not in use</a>
-							    <a className="dropdown-item" href="Chargers left plugged into wall always">Chargers left plugged into wall always</a>
-							    <a className="dropdown-item" href="Charge items even if they are not dead">Charge items even if they are not dead</a>
-							    <a className="dropdown-item" href="If I'm not using it, I'm charging it">If I'm not using it, I'm charging it</a>
-							  </div>
+						
+							<div className="form-group">
+							<h1 className="questions">Device Charging</h1>							  
+							    <select className="form-control">
+									<option value="1">Chargers unplugged when not in use</option>
+							    <option value="5">Chargers left plugged into wall always</option>
+							    <option value="10">Charge items even if they are not dead</option>
+							    <option value="15">If I'm not using it, I'm charging it</option>
+							  	</select>						
 							</div>
+
+						
+							<div className="form-group">
 							<h1 className="questions">Energy Conservation</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Only lights and appliances in use are turned on">Only lights and appliances in use are turned on</a>
-							    <a className="dropdown-item" href="Lights and appliances on timers">Lights and appliances on timers</a>
-							    <a className="dropdown-item" href="Some lights and appliances left on for safety">Some lights and appliances left on for safety</a>
-							    <a className="dropdown-item" href="Lights and appliances are always on all over">Lights and appliances are always on all over</a>
-							  </div>
+							    <select className="form-control">
+									<option value="Only lights and appliances in use are turned on">Only lights and appliances in use are turned on</option>
+							    <option value="Lights and appliances on timers">Lights and appliances on timers</option>
+							    <option value="Some lights and appliances left on for safety">Some lights and appliances left on for 	safety
+										</option>
+							    <option value="Lights and appliances are always on all over">Lights and appliances are always on all over</option>
+									</select>
+							
 							</div>
-							<h1 className="questions">Recycling</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="Recycle/reuse everything that can be">Recycle/reuse everything that can be</a>
-							    <a className="dropdown-item" href="Recycle everything, but don't reuse">Recycle everything, but don't reuse</a>
-							    <a className="dropdown-item" href="Recycle paper and plastic only">Recycle paper and plastic only</a>
-							    <a className="dropdown-item" href="I do not recycle...ever">I do not recycle...ever</a>
-							  </div>
+							
+							<div className="form-group">
+							<h1 className="questions">Recycling</h1>				  
+							    <select className="form-control">
+									<option value="1">Recycle/reuse everything that can be</option>
+							    <option value="5">Recycle everything, but don't reuse</option>
+							    <option value="10">Recycle paper and plastic only</option>
+							    <option value="15">I do not recycle...ever</option>
+							  	</select>							
 							</div>
-							<h1 className="questions">Last one</h1>
-							<div className="dropdown">
-							  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Options...
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    <a className="dropdown-item" href="100% Walk/Bike/Public Transit">100% Walk/Bike/Public Transit</a>
-							    <a className="dropdown-item" href="50% Walk/Bike/Public Transit">50% Walk/Bike/Public Transit</a>
-							    <a className="dropdown-item" href="Carpool/Public Transit Only">Carpool/Public Transit Only</a>
-							    <a className="dropdown-item" href="Walk/Bike Only">Something else here</a>
-							  </div>
+					
+							<div className="form-group">
+							<h1 className="questions">Last one</h1>							  
+							    <select className="form-control">
+									<option value="1">100% Walk/Bike/Public Transit</option>
+							    <option value="5">50% Walk/Bike/Public Transit</option>
+							    <option value="10">Carpool/Public Transit Only</option>
+							    <option value="15">Something else here</option>
+							  	</select>						
 							</div>
+
 							</div>
   						</div>
   					<div>
