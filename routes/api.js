@@ -17,14 +17,27 @@ router.route('/challenges')
 //route to add new User to the database
 router.route('/newuser')
     .post((req, res) => {
+
         db.User
-            .create(req.body)
-            .then(results => res.json(results))
-            .catch(err => res.status(500).json(err))
+            .find({
+                name: req.body.name
+            })
+            .then(user => {
+                if (user.length === 0) {
+                    db.User
+                        .create({
+                            name: req.body.name,
+                            password: req.body.password
+                        })
+                        .then(resp => res.json(resp))
+                } else res.json("exists");
+
+            })
+            .catch(error => res.status(500).json(err))
     });
 
 //route to get the daily challenge for push notifications (?)
-router.route('/user/:id') 
+router.route('/user/:id')
     .get((req, res) => {
         db.User
             .findById({
@@ -35,25 +48,33 @@ router.route('/user/:id')
     });
 
 //route to update goal max gauge
-router.route('/gaugeTarget/:id') 
+router.route('/gaugeTarget/:id')
     .put((req, res) => {
         db.User
-            .findOneAndUpdate({ _id: req.params.id }, {$set: { gaugeTarget: req.params.gaugeTarget }})
+            .findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                $set: {
+                    gaugeTarget: req.params.gaugeTarget
+                }
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     })
 
 //route to get max gauge number
-router.route('/gaugeTarget/:id') 
+router.route('/gaugeTarget/:id')
     .get((req, res) => {
         db.User
-            .findById({ _id: req.params.id })
+            .findById({
+                _id: req.params.id
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
 
 //route to add daily points to the user's profile
-router.route('/addpoints/:id') 
+router.route('/addpoints/:id')
     .post((req, res) => {
         db.User
             .findOneAndUpdate({
@@ -68,7 +89,7 @@ router.route('/addpoints/:id')
     });
 
 //route to get the daily challenge for push notifications (?)
-router.route('/challenge/:id') 
+router.route('/challenge/:id')
     .get((req, res) => {
         db.Challenge
             .findById({
@@ -82,7 +103,9 @@ router.route('/challenge/:id')
 router.route('/successStreak/:id')
     .get((req, res) => {
         db.User
-            .findById({ _id: req.params.id })
+            .findById({
+                _id: req.params.id
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
@@ -90,8 +113,14 @@ router.route('/successStreak/:id')
 //route to update successStreak 
 router.route('/successStreak/:id')
     .put((req, res) => {
-        db.User 
-            .findOneAndUpdate({ _id: req.params.id }, {$set: {succssStreak: req.params.successStreak}})
+        db.User
+            .findOneAndUpdate({
+                _id: req.params.id
+            }, {
+                $set: {
+                    succssStreak: req.params.successStreak
+                }
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
@@ -101,7 +130,9 @@ router.route('/leaderboard/successstreak')
     .get((req, res) => {
         db.User
             .find()
-            .sort({ successStreak: -1 })
+            .sort({
+                successStreak: -1
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
@@ -111,7 +142,9 @@ router.route('/leaderboard/challenges')
     .get((req, res) => {
         db.User
             .find()
-            .sort({ challengeScore: 1 })
+            .sort({
+                challengeScore: 1
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     })
@@ -127,8 +160,16 @@ router.route('/login')
         //will need to hash and salt for production, bcrypt???
         const password = req.body.password;
 
-        console.log('dir', __dirname);
-        res.json("login route worked");
+        // make token 
+        // pass token back
+        // store token
+        // delete token on unmount?
+        // monitor state for token
+
+        db.User
+            .find({name: username, password: password})
+            .then(results => res.json("exists"))
+            .catch(err => res.status(500).json(err))
     });
 
 router.route('/subscriptions')
