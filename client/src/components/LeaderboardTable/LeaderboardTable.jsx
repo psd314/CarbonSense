@@ -17,7 +17,7 @@ class LeaderboardTable extends Component {
 				      {/* <th scope="col">Age</th> */}
 				      <th scope="col">Gender</th>
 				      <th scope="col">Success Streak</th>
-							<th scope="col">Challenges Score</th>
+							<th scope="col">Challenge Score</th>
 				    </tr>
 				  </thead>
 				  <tbody>

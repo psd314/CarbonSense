@@ -34,7 +34,7 @@ class Leaderboard extends Component {
 							{this.state.leaders.map( (result, index) => {
 								return (
 									<LeaderboardTableRow
-										index={index}
+										index={index + 1}
 										name={result.name}
 										location={result.location}
 										gender={result.gender}
@@ -44,7 +44,7 @@ class Leaderboard extends Component {
 									);	
 								})
 							}
-							
+
 						</LeaderboardTable>
 			</div>				
 		);
