@@ -21,7 +21,10 @@ class Signup extends Component {
 		event.preventDefault();		
 		this.setState({ errors : {} });
 		this.props.userSignupRequest(this.state)
-		.then(() => {},
+		.then((resp) => {
+			this.setState({errors: {name:"Logging in..."}});
+			setTimeout(() => { this.props.history.push('/dashboard')}, 1500);
+			},
 			(err) => { this.setState({errors: err.response.data})}
 		);
 
