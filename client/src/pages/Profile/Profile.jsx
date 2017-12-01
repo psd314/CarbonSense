@@ -12,7 +12,7 @@ componentDidMount() {
 	}
 
 	loadUser = () => {
-		axios.get("/user/5a1f3cc4f36b011c04114055")
+		axios.get("/user/5a20a5e29c914a2bf8134d13")
 			.then(res => {
 				this.setState({ user: res.data })
 				console.log(this.state)
