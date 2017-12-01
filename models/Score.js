@@ -3,11 +3,6 @@ const mongoose = require('mongoose');
 const dailyScoreSchema = new mongoose.Schema({
     date: {
         type: Date, 
-        required: true,
-        default: Date.now
-    },
-    user: {
-        type: String,
         required: true
     },
     score: {
@@ -16,6 +11,6 @@ const dailyScoreSchema = new mongoose.Schema({
     }
 }); 
 
-const DailyScores = mongoose.model('DailyScores', dailyScoreSchema); 
+const DailyScore = mongoose.model('DailyScore', dailyScoreSchema); 
 
-module.exports = DailyScores; 
+module.exports = DailyScore; 

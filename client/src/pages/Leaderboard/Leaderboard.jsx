@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import LeaderboardTable from '../../components/LeaderboardTable/LeaderboardTable.jsx';
 import "./leader.css";
-import LeaderboardTableRow from '../../components/LeaderboardTableRow/LeaderboardTableRow.jsx'
-import axios from 'axios'
+import LeaderboardTableRow from '../../components/LeaderboardTableRow/LeaderboardTableRow.jsx';
+import axios from 'axios';
 
 class Leaderboard extends Component {
 	state = {

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -25,6 +26,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         defualt: 100
     }, 
+    dailyScores: [{
+        type: Schema.Types.ObjectId,
+        ref: "DailyScore"
+    }],
     successStreak: {
         //add to this number for each successful day (day below guageTarget)
         type: Number,
