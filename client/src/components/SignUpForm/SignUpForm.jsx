@@ -23,7 +23,7 @@ class SignUpForm extends Component {
 				  <div className="form-group col-4 offset-4">
 				    <label htmlFor="password">Password</label>
 				    <input 
-				    	type="text" 
+				    	type="password" 
 				    	className="form-control" 
 				    	id="password"  
 				    	placeholder="********"
