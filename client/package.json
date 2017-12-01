@@ -1,16 +1,26 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "babel": {
+        "presets": [
+            "es2015"
+        ]
+    },
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
     "axios": "^0.17.1",
+    "lodash": "^4.17.4",
     "react": "^16.1.1",
     "react-chart-line": "^1.0.15",
     "react-dom": "^16.1.1",
     "react-liquid-gauge": "^1.2.3",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.0.17"
+    "react-scripts": "^1.0.17",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "validator": "^9.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
