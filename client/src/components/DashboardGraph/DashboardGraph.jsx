@@ -11,6 +11,21 @@ class ProfileGraph extends Component {
     };
     startColor = '#6495ed'; // cornflowerblue
     endColor = '#6495ed'; // crimson
+
+
+    componentDidMount() {
+            this.loadScore();
+        }
+
+    loadScore = () => {	
+        axios.get("")
+                .then(res => {
+                    this.setState({ value: res.data })
+                    console.log(value)
+                })
+                .catch(err => console.log(err));
+            }
+
  
     render() {
         const radius = 200;

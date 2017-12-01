@@ -116,7 +116,7 @@ router.route('/addpoints/:id')
                 _id: req.params.id
             }, {
                 $set: {
-                    dailyPoints: req.params.dailyPoints
+                    dailyScore: req.params.dailyScore
                 }
             })
             .then(results => res.json(results))

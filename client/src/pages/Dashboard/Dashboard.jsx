@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import DashboardGraph from "../../components/DashboardGraph/DashboardGraph.jsx";
 import "./dashboard.css";
+
+
 class Dashboard extends Component {
+state = {
+		currentScore: 0
+	}
+
+componentDidMount() {
+		this.loadScore();
+	}
+
+loadScore = () => {	
+	axios.get("")
+			.then(res => {
+				this.setState({ currentScore: res.data })
+				console.log(currentScore)
+			})
+			.catch(err => console.log(err));
+		}
 
 	render() {
 		return(
@@ -17,7 +35,7 @@ class Dashboard extends Component {
 				</div>
 					<div className="row">
 						<div className="col-6 question-col">
-														
+
 							<div className="form-group">
 							<h1 className="questions">Transportation</h1>						  
 							    <select className="form-control">
