@@ -1,41 +1,34 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { login } from '../../actions/loginRequest.js';
 
 class Login extends Component {
 
 	state = {
 		name: '',
 		password: '',
-		error: ''
+		errors: ''
 	}
 
 	componentDidMount() {
 
 	}
 	
-	login = (event) => {
-		
-		event.preventDefault();		
-			axios
-				.post('/login', {name: this.state.name, password: this.state.password})
-				.then(res => {
-					console.log(res.data);
-					if(res.data === "exists") {
-						this.setState({error: "Logging In"})
-						setTimeout( () => {						
-							this.props.history.push("/dashboard");
-							}, 1500);
-					} else {
-						this.setState({error: "Loggin in..."})
-						setTimeout( () => {						
-							this.props.history.push("/dashboard");
-						}, 1500);					
-					}
-				})
-				.catch(err => console.error(err));		
+	handleLogin = (event) => {		
+		event.preventDefault();	
+		this.setState({errors: {}});
+		this.props.login(this.state)
+		.then((resp) => {
+			this.setState({errors: {name:"Logging in..."}});
+			setTimeout(() => { this.props.history.push('/dashboard')}, 1500);
+			},
+			(err) => { this.setState({errors: err.response.data}) }
+		);
 	}
 
 	render() {
+		const { errors } = this.state;
 		return(
 			<div>
 				<div style={{ paddingTop: 150, paddingBottom: 30}}>
@@ -49,7 +42,7 @@ class Login extends Component {
 				    		<div className="input-group">
 							  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
 							  	value={this.props.value}
-							  	onChange={event => this.setState({username: event.target.value})}					
+							  	onChange={event => this.setState({name: event.target.value})}					
 							  	name="name"
 							  	placeholder="email"
 							  	/>
@@ -77,12 +70,14 @@ class Login extends Component {
 				    	</div>
 				    </div>
 			    </div>
-			    <button type="button" className="btn btn-secondary" onClick={this.login}>Login</button><a href="/signup" style={{color:"orange",
+			    <button type="button" className="btn btn-secondary" onClick={this.handleLogin}>Login</button><a href="/signup" style={{color:"orange",
 					fontSize: 30, fontWeight: "bold"}}>Sign Up</a>
-				<h3 style={{color: "orange"}}><span>{this.state.error}</span></h3>
+				<h3 style={{color: "orange"}}><span>{errors.name}</span></h3>
+				<h3 style={{color: "orange"}}><span>{errors.password}</span></h3>
+				<h3 style={{color: "orange"}}><span>{errors.errors}</span></h3>
 			</div>
 		);
 	}
 }
 
-export default Login;
+export default connect(null, { login })(Login);
