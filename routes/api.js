@@ -1,5 +1,9 @@
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import config from '../config/config.js';
+import authenticate from '../middleware/validateToken.js';
 const router = require('express').Router();
 const db = require('../models');
 
@@ -30,6 +34,25 @@ function validateInput(data) {
     }
 }
 
+function validateLogin(data) {
+    // console.log('data:', data);
+    let errors = {};
+
+    if (isEmpty(data.name)) {
+        errors.name = 'Email field is required';
+    }
+    if (!isEmpty(data.name) && !Validator.isEmail(data.name)) {
+        errors.name = 'Please enter a valid email address';
+    }
+    if (isEmpty(data.password)) {
+        errors.password = 'Password field is required';
+    }
+    return {
+        errors,
+        isValid: isEmpty(errors)
+    }
+}
+
 router.route('/challenges')
     .get((req, res) => {
 
@@ -43,6 +66,9 @@ router.route('/challenges')
 //route to add new User to the database
 router.route('/newuser')
     .post((req, res) => {
+
+        const passwordDigest = bcrypt.hashSync(req.body.password, 10);
+
         const {
             errors,
             isValid
@@ -57,7 +83,7 @@ router.route('/newuser')
                         db.User
                             .create({
                                 name: req.body.name,
-                                password: req.body.password
+                                password: passwordDigest
                             })
                             .then(resp => res.json(resp))
                     } else {
@@ -67,7 +93,7 @@ router.route('/newuser')
                 })
                 .catch(error => res.status(500).json(err))
         } else {
-            res.status(400).json(errors);
+            res.status(401).json(errors);
         }
     });
 
@@ -191,23 +217,37 @@ router.route('/leaderboard/challenges')
 // verify login info
 router.route('/login')
     .post((req, res) => {
-        const username = req.body.username;
-        //will need to hash and salt for production, bcrypt???
+        const username = req.body.name;
         const password = req.body.password;
+        const {
+            errors,
+            isValid
+        } = validateLogin(req.body);
 
-        // make token 
-        // pass token back
-        // store token
-        // delete token on unmount?
-        // monitor state for token
+        if (isValid) {
+            db.User
+                .find({
+                    name: username,
+                })
+                .then(results => {
+                    if (bcrypt.compareSync(password, results[0].password)) {
+                        const token = jwt.sign({
+                            id: results._id,
+                            name: results[0].name
+                        }, config.jwtSecret);
+                        res.json({
+                            token
+                        });
+                    } else {
+                        errors.errors = "Email or password is incorrect";
+                        res.status(400).json(errors);
+                    }
+                })
+                .catch(err => res.status(500).json(err))
+        } else {
 
-        db.User
-            .find({
-                name: username,
-                password: password
-            })
-            .then(results => res.json("exists"))
-            .catch(err => res.status(500).json(err))
+            res.status(401).json(errors);
+        }
     });
 
 router.route('/subscriptions')
@@ -227,6 +267,16 @@ router.route('/subscriptions')
                 function(error, doc) {
                     res.json("success");
                 });
+    });
+
+// prototype route for validating user on all routes
+// attached to Temp Btn
+router.route('/token')
+    .get(authenticate, (req, res) => {
+
+        res.status(201).json({
+            success: true
+        });
     });
 
 module.exports = router;

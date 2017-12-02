@@ -3,6 +3,7 @@ import DashboardGraph from "../../components/DashboardGraph/DashboardGraph.jsx";
 import "./dashboard.css";
 import axios from "axios";
 
+
 class Dashboard extends Component {
 // state = {
 // 		currentScore: 0
@@ -12,6 +13,7 @@ class Dashboard extends Component {
 // 		this.loadScore();
 // 	}
 
+
 // loadScore = () => {	
 // 	axios.post("")
 // 			.then(res => {
@@ -20,6 +22,7 @@ class Dashboard extends Component {
 // 			})
 // 			.catch(err => console.log(err));
 // 		}
+
 
 	render() {
 		return(

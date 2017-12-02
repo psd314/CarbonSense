@@ -22,13 +22,11 @@ class Signup extends Component {
 		this.setState({ errors : {} });
 		this.props.userSignupRequest(this.state)
 		.then((resp) => {
-			this.setState({errors: {name:"Logging in..."}});
+			this.setState({errors: {name:"Signing up..."}});
 			setTimeout(() => { this.props.history.push('/dashboard')}, 1500);
 			},
 			(err) => { this.setState({errors: err.response.data})}
 		);
-
-
 	}
 
 	handleInputChange = (event) => {
