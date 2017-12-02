@@ -116,7 +116,7 @@ router.route('/gaugeTarget/:id')
                 _id: req.params.id
             }, {
                 $set: {
-                    gaugeTarget: req.params.gaugeTarget
+                    gaugeTarget: req.body.newTarget
                 }
             })
             .then(results => res.json(results))
