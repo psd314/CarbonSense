@@ -30,6 +30,12 @@ class ProfileGraph extends Component {
                 offset: '50%'
             },
             {
+                key: '80%',
+                stopColor: color("#ff0000").darker(0.5).toString(),
+                stopOpacity: 0.75,
+                offset: '50%'
+            },
+            {
                 key: '100%',
                 stopColor: color(fillColor).brighter(0.5).toString(),
                 stopOpacity: 0.5,
@@ -38,7 +44,7 @@ class ProfileGraph extends Component {
         ];
  
         return (
-            <div className="DashboardGraph">
+            <div className="DashboardGraph" style={{marginBottom:150}}>
                 <LiquidFillGauge
                     style={{ margin: '0 auto' }}
                     width={radius * 2}
@@ -79,11 +85,11 @@ class ProfileGraph extends Component {
                         fill: fillColor
                     }}
                     textStyle={{
-                        fill: color('#444').toString(),
+                        fill: color('white').toString(),
                         fontFamily: 'Arial'
                     }}
                     waveTextStyle={{
-                        fill: color('#fff').toString(),
+                        fill: color('#ff0000').toString(),
                         fontFamily: 'Arial'
                     }}
                     onClick={() => {

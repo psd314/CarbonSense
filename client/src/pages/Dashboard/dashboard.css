@@ -24,7 +24,7 @@
 }
 
 .questions {
-	color: black;
+	color: white;
 	/* justify-content: center; */
 	margin-left: 60px;
 	margin-bottom: 20px;
@@ -39,3 +39,21 @@
 .question-col {
 	margin-top: 200px;
 } 
+
+.btn3 {
+	color: #000000;
+	background-color: #29c7d8;
+	font-family: 'Dosis', sans-serif;
+	font-size: 22pt;
+	width: 100%;
+	margin-top: 30px;
+}
+
+.btn-caption {
+	color: white;
+	background-color: transparent;
+	font-family: 'Dosis', sans-serif;
+	font-size: 24pt;
+	width: 100%;
+	margin-top: 30px;
+}

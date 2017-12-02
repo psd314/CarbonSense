@@ -5,7 +5,7 @@ class Dashboard extends Component {
 
 	render() {
 		return(
-			<div className="Container" >
+			<div className="Container" style={{marginBottom:250}}>
 				<div className="col-8">
 					<div className="Head">
 						<h1>Dashboard</h1>
@@ -16,7 +16,7 @@ class Dashboard extends Component {
 					
 				</div>
 					<div className="row">
-						<div className="col-6 question-col">
+						<div className="col-4 offset-1 question-col">
 														
 							<div className="form-group">
 							<h1 className="questions">Transportation</h1>						  
@@ -119,17 +119,17 @@ class Dashboard extends Component {
 							    <option value="15">Something else here</option>
 							  	</select>						
 							</div>
+								<button type="button" class="btn btn-success btn3">SUBMIT...</button>
+								<h3 className="btn-caption">to see what percentage of your daily carbon you have used today!</h3>
 
 							</div>
   						</div>
   					<div>
+  						
 						<DashboardGraph/>
-					</div>
-
 
 					</div>
-			
-				
+				</div>
 			</div>		
 		);
 	}
