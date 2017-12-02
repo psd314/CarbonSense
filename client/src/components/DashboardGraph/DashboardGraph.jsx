@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import LiquidFillGauge from 'react-liquid-gauge';
 import "./DashboardGraph.css"
-import axios from 'axios';
-
+import axios from "axios";
+ 
 class ProfileGraph extends Component {
     state = {
         value: 50

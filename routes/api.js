@@ -167,6 +167,7 @@ router.route('/addpoints/:id')
         res.json({
             success: true
         });
+
     });
 
 //route to get the daily challenge for push notifications (?)
