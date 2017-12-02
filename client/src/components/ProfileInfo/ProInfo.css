@@ -1,0 +1,29 @@
+.profileInfo-div {
+	
+	margin-left: 100px;
+	padding: 20px 20px 30px 20px;
+	color: #000000;
+	font-family: 'Dosis', sans-serif;
+	font-size: 28pt;
+
+
+}
+
+.container-box {
+	background: white;
+	border: 5px  solid white ;
+	border-radius: 10px;
+	margin-top: 125px;
+
+}
+
+.profile-stats {
+	font-size: 24pt;
+}
+
+.profile-word {
+	color: #000000;
+	font-family: 'Dosis', sans-serif;
+	font-size: 45pt;
+	font-weight: bolder;
+}
