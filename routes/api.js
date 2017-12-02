@@ -116,7 +116,7 @@ router.route('/gaugeTarget/:id')
                 _id: req.params.id
             }, {
                 $set: {
-                    gaugeTarget: req.params.gaugeTarget
+                    gaugeTarget: req.body.newTarget
                 }
             })
             .then(results => res.json(results))
@@ -137,12 +137,16 @@ router.route('/gaugeTarget/:id')
 //route to add daily points to the user's profile
 router.route('/addpoints/:id')
     .post((req, res) => {
+        console.log(req.body); 
         db.User
             .findOneAndUpdate({
                 _id: req.params.id
             }, {
-                $set: {
-                    dailyScores: 24
+                $push: {
+                    "dailyScores": {
+                        date: req.body.date,
+                        score: req.body.score
+                    }
                 }
             })
             .then(results => res.json(results))
