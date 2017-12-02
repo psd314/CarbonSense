@@ -3,9 +3,7 @@ import Button from '../Button/Button.jsx';
 import ProfileGraph from '../ProfileGraph/ProfileGraph.jsx';
 import "./ProInfo.css"
 
-
 class ProfileInfo extends Component {
-	
 	render() {
 		return(
 			<div className="row">
