@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dailyScoreSchema = new mongoose.Schema({
     date: {
         type: Date, 
-        required: true
+        // required: true
     },
     score: {
         type: Number,
