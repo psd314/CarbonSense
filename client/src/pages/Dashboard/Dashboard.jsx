@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import DashboardGraph from "../../components/DashboardGraph/DashboardGraph.jsx";
 import "./dashboard.css";
-
+import axios from 'axios';
 
 class Dashboard extends Component {
-state = {
-		currentScore: 0
-	}
+// state = {
+// 		currentScore: 0
+// 	}
 
-componentDidMount() {
-		this.loadScore();
-	}
+// componentDidMount() {
+// 		this.loadScore();
+// 	}
 
-loadScore = () => {	
-	axios.get("")
-			.then(res => {
-				this.setState({ currentScore: res.data })
-				console.log(currentScore)
-			})
-			.catch(err => console.log(err));
-		}
+	// axios.get("")
+	// 		.then(res => {
+	// 			this.setState({ currentScore: res.data })
+	// 			console.log(currentScore)
+	// 		})
+	// 		.catch(err => console.log(err));
+	// 	}
 
 	render() {
 		return(

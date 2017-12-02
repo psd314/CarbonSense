@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import LiquidFillGauge from 'react-liquid-gauge';
 import "./DashboardGraph.css"
- 
+import axios from 'axios';
+
 class ProfileGraph extends Component {
     state = {
         value: 50
@@ -13,18 +14,18 @@ class ProfileGraph extends Component {
     endColor = '#6495ed'; // crimson
 
 
-    componentDidMount() {
-            this.loadScore();
-        }
+    // componentDidMount() {
+    //         this.loadScore();
+    //     }
 
-    loadScore = () => {	
-        axios.get("")
-                .then(res => {
-                    this.setState({ value: res.data })
-                    console.log(value)
-                })
-                .catch(err => console.log(err));
-            }
+    // loadScore = () => {	
+    //     axios.get("")
+    //             .then(res => {
+    //                 this.setState({ value: res.data })
+    //                 console.log(value)
+    //             })
+    //             .catch(err => console.log(err));
+    //         }
 
  
     render() {

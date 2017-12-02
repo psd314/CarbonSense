@@ -10,6 +10,7 @@
   "proxy": "http://localhost:3001",
   "dependencies": {
     "axios": "^0.17.1",
+    "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "react": "^16.1.1",
     "react-chart-line": "^1.0.15",
