@@ -6,7 +6,7 @@ import config from '../config/config.js';
 import authenticate from '../middleware/validateToken.js';
 const router = require('express').Router();
 const db = require('../models');
-
+const DailyScore = require('../models/Score.js');
 //route to display all the challenges in the database (if we need this)
 
 function validateInput(data) {
@@ -137,16 +137,36 @@ router.route('/gaugeTarget/:id')
 //route to add daily points to the user's profile
 router.route('/addpoints/:id')
     .post((req, res) => {
-        db.User
-            .findOneAndUpdate({
-                _id: req.params.id
-            }, {
-                $set: {
-                    dailyScore: req.params.dailyScore
-                }
-            })
-            .then(results => res.json(results))
-            .catch(err => res.status(500).json(err))
+
+        const newDailyScore = new DailyScore(req.body);
+
+        newDailyScore.save((error, doc) => {
+            if (error) {
+                res.send(error);
+            }
+            else {
+                db.User.findOneAndUpdate({
+                    _id : req.params.id
+                }, {
+                    $push: {
+                        "dailyScores": doc._id
+                    }
+                }, {
+                    new: true
+                }, function(err, newdoc) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    else {
+                        res.send(newdoc);
+                    }
+                });
+            }
+        })
+
+        res.json({
+            success: true
+        });
     });
 
 //route to get the daily challenge for push notifications (?)
@@ -271,12 +291,15 @@ router.route('/subscriptions')
 
 // prototype route for validating user on all routes
 // attached to Temp Btn
-router.route('/token')
+router.route('/token/:id')
     .get(authenticate, (req, res) => {
 
         res.status(201).json({
             success: true
         });
+    })
+    .post((req, res) => {
+        console.log(req.body);
     });
 
 module.exports = router;
