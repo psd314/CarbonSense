@@ -11,15 +11,13 @@ export default (req, res, next) => {
     }
 
     if (token) {
+
         jwt.verify(token, config.jwtSecret, (err, decoded) => {
-            console.log('decoded:', decoded);
             if (err) {
                 res.status(401).json({
                     error: 'Failed to authenticate'
                 });
             } else {
-                // query db for user
-                // if no user then respond with 404
                 db.User.find({
                         name: decoded.name
                     })

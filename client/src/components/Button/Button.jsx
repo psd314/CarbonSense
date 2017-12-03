@@ -7,7 +7,7 @@ class Button extends Component {
 		return (
 			
 			<button className="btn btn-edit" 
-			onClick={this.props.handleOnClick}
+			onClick={this.props.onClick}
 			to={this.props.to}>{this.props.buttonName}</button>
 			
 		);	
