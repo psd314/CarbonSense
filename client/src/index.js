@@ -15,7 +15,7 @@ const store = createStore(rootReducer, compose(applyMiddleware(thunk),
 	window.devToolsExtension ? window.devToolsExtension() : f => f));
 
 if(localStorage.jwtToken) {
-	setJwtToken(localStorage);
+	setJwtToken(localStorage.jwtToken);
 	store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
 }
 
@@ -23,4 +23,3 @@ ReactDOM.render(<Provider store={store}>
 				<App />
 				</Provider>, document.getElementById('root'));
 registerServiceWorker();
-{/*need to connect components to redux*/}
