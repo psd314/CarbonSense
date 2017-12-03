@@ -8,7 +8,8 @@ import axios from "axios";
  
 class ProfileGraph extends Component {
     state = {
-        value: 50
+        value: 1,
+        gaugeTarget: 100
     };
     startColor = '#6495ed'; // cornflowerblue
     endColor = '#6495ed'; // crimson
@@ -61,6 +62,7 @@ class ProfileGraph extends Component {
  
         return (
             <div className="DashboardGraph" style={{marginBottom:150}}>
+                <h1>Max Carbon Points: {this.state.gaugeTarget}</h1>
                 <LiquidFillGauge
                     style={{ margin: '0 auto' }}
                     width={radius * 2}
