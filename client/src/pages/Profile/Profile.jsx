@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo.jsx';
 import axios from 'axios';
-
+import { connect } from 'react-redux';
 
 class Profile extends Component {
 state = {
@@ -13,6 +13,7 @@ componentDidMount() {
 	}
 
 	loadUser = () => {
+<<<<<<< HEAD
 		axios.get("/user/5a22ea7b67a02b3b07921758")
 
 			.then(res => {
@@ -20,6 +21,12 @@ componentDidMount() {
 				console.log(this.state)
 			})
 			.catch(err => console.log(err));
+=======
+		axios.get('/user/1')
+			.then( resp => { 
+				this.setState({ user: resp.data[0] })
+			});
+>>>>>>> c5f63f8dfe5f43a9af89a7a3527e803566dc2e7d
 	}
 
 
@@ -49,4 +56,11 @@ componentDidMount() {
 	}
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
+  };
+}
+
+
+export default connect(mapStateToProps)(Profile);

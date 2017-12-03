@@ -35,7 +35,6 @@ function validateInput(data) {
 }
 
 function validateLogin(data) {
-    // console.log('data:', data);
     let errors = {};
 
     if (isEmpty(data.name)) {
@@ -99,15 +98,19 @@ router.route('/newuser')
 
 //route to get the daily challenge for push notifications (?)
 router.route('/user/:id')
-    .get((req, res) => {
+    .get(authenticate, (req, res) => {
+        // console.log('req.currentUser:', req.currentUser);
         db.User
-            .findById({
-                _id: req.params.id
+            .find({
+                name: req.currentUser
             })
-            .then(results => res.json(results))
+            .then(results => res.json(results)) 
             .catch(err => res.status(500).json(err))
+    })
+    .post(authenticate, (req, res) => {
+        res.json({success: "user post"});
     });
-
+//
 //route to update goal max gauge
 router.route('/gaugeTarget/:id')
     .put((req, res) => {
@@ -116,7 +119,7 @@ router.route('/gaugeTarget/:id')
                 _id: req.params.id
             }, {
                 $set: {
-                    gaugeTarget: req.body.newTarget
+                    gaugeTarget: req.params.gaugeTarget
                 }
             })
             .then(results => res.json(results))
@@ -167,7 +170,6 @@ router.route('/addpoints/:id')
         res.json({
             success: true
         });
-
     });
 
 //route to get the daily challenge for push notifications (?)

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx';
-import axios from 'axios';
-import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../../actions/signupActions.js';
 import PropTypes from 'prop-types';
