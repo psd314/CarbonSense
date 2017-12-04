@@ -6,7 +6,7 @@ import "./ProInfo.css"
 class ProfileInfo extends Component {
 	render() {
 		return(
-			<div className="row">
+			<div className="row row2">
 				<div className="col-8 offset-2">
 					<div className="container container-box">
 						<div className="row profileInfo-div">

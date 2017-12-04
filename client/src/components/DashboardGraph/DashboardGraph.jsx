@@ -10,8 +10,8 @@ class ProfileGraph extends Component {
     state = {
         value: 50
     };
-    startColor = '#6495ed'; // cornflowerblue
-    endColor = '#6495ed'; // crimson
+    startColor = '#000000'; // cornflowerblue
+    endColor = '#000000'; // crimson
 
 
     // componentDidMount() {
@@ -29,7 +29,7 @@ class ProfileGraph extends Component {
 
  
     render() {
-        const radius = 200;
+        const radius = 205;
         const interpolate = interpolateRgb(this.startColor, this.endColor);
         const fillColor = interpolate(this.state.value / 100);
         const gradientStops = [
@@ -47,7 +47,7 @@ class ProfileGraph extends Component {
             },
             {
                 key: '80%',
-                stopColor: color("#ff0000").darker(0.5).toString(),
+                stopColor: color("#000000").darker(0.5).toString(),
                 stopOpacity: 0.75,
                 offset: '50%'
             },

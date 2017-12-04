@@ -9,6 +9,7 @@ import Login from './pages/Login/Login.jsx';
 import Admin from './pages/Admin/Admin.jsx';
 import Signup from './pages/Signup/Signup.jsx';
 import Authenticate from './utils/authenticate.js';
+import Footer from './components/Footer/footer.jsx';
 
 class App extends Component {
 
@@ -27,7 +28,9 @@ class App extends Component {
             <Route exact path="/admin" component={Admin} /> 
             <Route component={Login} />       
           </Switch>
+          
         </Router>
+        <Footer />
       </div>
     );
   }
