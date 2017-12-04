@@ -23,7 +23,6 @@ class Login extends Component {
 			setTimeout(() => { this.props.history.push('/dashboard')}, 1500);
 			},
 			(err) => { 
-				console.log(err.response.data);
 				this.setState({errors: err.response.data}) 
 		});
 	}

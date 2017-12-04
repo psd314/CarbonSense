@@ -55,7 +55,6 @@ class ProfileInfo extends Component {
 					gender: res.data.gender					
 					})
 			});
-			console.log('state', this.state);
 	}
 
 	render() {
@@ -76,7 +75,7 @@ class ProfileInfo extends Component {
 											  	type="text"										 
 											  	/>
 											</div>
-											: <img style={{width: 200}} alt="profile photo" src={this.state.image}/>
+											: <img style={{width: 200}} alt="profile" src={this.state.image}/>
 										}
 									</div>
 								</div>
