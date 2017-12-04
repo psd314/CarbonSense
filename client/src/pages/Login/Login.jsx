@@ -22,8 +22,10 @@ class Login extends Component {
 			this.setState({errors: {name:"Logging in..."}});
 			setTimeout(() => { this.props.history.push('/dashboard')}, 1500);
 			},
-			(err) => { this.setState({errors: err.response.data}) }
-		);
+			(err) => { 
+				console.log(err.response.data);
+				this.setState({errors: err.response.data}) 
+		});
 	}
 
 	render() {
