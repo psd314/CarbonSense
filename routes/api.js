@@ -163,35 +163,42 @@ router.route('/gaugeTarget')
 
 //route to add daily points to the user's profile
 router.route('/addpoints')
-    .post((req, res) => {
+    .post(authenticate, (req, res) => {
         const now = moment().format('MM-DD-YYYY'); 
-        console.log(now);
-        console.log(req.body);
-        const currentUser = 'jtgonski@gmail.com'; 
+        // console.log('now:', now);
+        // console.log('body:', req.body);
+        console.log('current:', req.currentUser);
 
-        // const newDailyScore = new DailyScore(req.body);
+        // upsert if date doesn't exist, update otherwise
+        // respond with new score
 
-        // newDailyScore.save((error, doc) => {
-        //     if (error) {
-        //         res.send(error);
-        //     } else {
-        //         db.User.findOneAndUpdate({
-        //             name: currentUser
-        //         }, {
-        //             $push: {
-        //                 "dailyScores": doc._id
-        //             }
-        //         }, {
-        //             new: true
-        //         }, function(err, newdoc) {
-        //             if (err) {
-        //                 res.send(err);
-        //             } else {
-        //                 res.send(newdoc);
-        //             }
-        //         });
-        //     }
-        // })
+        // db.User.findOne({name: req.currentUser})
+        //     .then( (res) => console.log(res));
+
+        const newDailyScore = new DailyScore({date: now, score: req.body.score});
+        // console.log(newDailyScore);
+        newDailyScore.save((error, doc) => {
+
+            if (error) {
+                res.send(error);
+            } else {
+                db.User.findOneAndUpdate({
+                    name: req.currentUser
+                }, {
+                    $push: {
+                        "dailyScores": doc
+                    }
+                }, {
+                    new: true
+                }, function(err, newdoc) {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        res.send(newdoc);
+                    }
+                });
+            }
+        });
 
         res.json({
             success: true

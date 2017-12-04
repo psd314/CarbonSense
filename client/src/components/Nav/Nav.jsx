@@ -20,7 +20,7 @@ class Nav extends Component {
     const { isAuthenticated } = this.props.auth;
 
     const logOutButton = (
-      <a href="#" onClick={this.logout.bind(this)}><button type="button" className="btn btn-outline-success">Log Out<span className="sr-only">(current)</span></button></a>
+      <a  onClick={this.logout.bind(this)}><button type="button" className="btn btn-outline-success">Log Out<span className="sr-only">(current)</span></button></a>
     );
 
     const loginButton = (
