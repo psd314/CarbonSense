@@ -7,7 +7,8 @@ const dailyScoreSchema = new mongoose.Schema({
     },
     score: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     }
 }); 
 

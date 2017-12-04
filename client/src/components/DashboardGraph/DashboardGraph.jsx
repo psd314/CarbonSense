@@ -9,24 +9,33 @@ import axios from "axios";
 class ProfileGraph extends Component {
     state = {
         value: 1,
-        gaugeTarget: 100
+        gaugeTarget: 0
     };
     startColor = '#6495ed'; // cornflowerblue
     endColor = '#6495ed'; // crimson
 
 
-    // componentDidMount() {
-    //         this.loadScore();
-    //     }
+    componentDidMount() {
+            this.loadSettings();
+        }
 
-    // loadScore = () => {	
-    //     axios.get("")
-    //             .then(res => {
-    //                 this.setState({ value: res.data })
-    //                 console.log(value)
-    //             })
-    //             .catch(err => console.log(err));
-    //         }
+    loadSettings = () => {	
+        axios.get("/gaugeTarget")
+                .then(res => {
+                    this.setState({ gaugeTarget: res.data.gaugeTarget });
+                    console.log("results" , this.state.gaugeTarget);
+                })
+                .catch(err => console.log(err));
+            }
+
+    updateGaugeTarget = () => {
+        axios.put("/gaugeTarget")
+            .then(res => {
+                this.setState({ gaugeTarget: res.data.gaugeTarget });
+                console.log("results", this.state.gaugeTarget);
+            })
+            .catch(err => console.log(err));
+    }
 
  
     render() {
