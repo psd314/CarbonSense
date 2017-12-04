@@ -165,30 +165,33 @@ router.route('/gaugeTarget')
 router.route('/addpoints')
     .post((req, res) => {
         const now = moment().format('MM-DD-YYYY'); 
-        console.log(now)
-        const newDailyScore = new DailyScore(req.body);
+        console.log(now);
+        console.log(req.body);
+        const currentUser = 'jtgonski@gmail.com'; 
 
-        newDailyScore.save((error, doc) => {
-            if (error) {
-                res.send(error);
-            } else {
-                db.User.findOneAndUpdate({
-                    name: currentUser
-                }, {
-                    $push: {
-                        "dailyScores": doc._id
-                    }
-                }, {
-                    new: true
-                }, function(err, newdoc) {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        res.send(newdoc);
-                    }
-                });
-            }
-        })
+        // const newDailyScore = new DailyScore(req.body);
+
+        // newDailyScore.save((error, doc) => {
+        //     if (error) {
+        //         res.send(error);
+        //     } else {
+        //         db.User.findOneAndUpdate({
+        //             name: currentUser
+        //         }, {
+        //             $push: {
+        //                 "dailyScores": doc._id
+        //             }
+        //         }, {
+        //             new: true
+        //         }, function(err, newdoc) {
+        //             if (err) {
+        //                 res.send(err);
+        //             } else {
+        //                 res.send(newdoc);
+        //             }
+        //         });
+        //     }
+        // })
 
         res.json({
             success: true
