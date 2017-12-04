@@ -22,7 +22,11 @@ class Dashboard extends Component {
 // 			})
 // 			.catch(err => console.log(err));
 // 		}
-
+	handleOnClick = (event) => {
+		event.preventDefault();
+		axios
+			.post('/addpoints', {test:"test route"})
+	}
 
 	render() {
 		return(
@@ -141,7 +145,10 @@ class Dashboard extends Component {
 							    <option value="15">Something else here</option>
 							  	</select>						
 							</div>
-								<button type="button" className="btn btn-success btn3">SUBMIT...</button>
+								<button 
+									type="button" 
+									className="btn btn-success btn3"
+									onClick={this.handleOnClick}>SUBMIT...</button>
 								<h3 className="btn-caption">to see what percentage of your daily carbon you have used today!</h3>
 
 							</div>
