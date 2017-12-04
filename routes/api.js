@@ -100,16 +100,31 @@ router.route('/newuser')
 //route to get the daily challenge for push notifications (?)
 router.route('/user/:id')
     .get(authenticate, (req, res) => {
-        // console.log('req.currentUser:', req.currentUser);
         db.User
             .find({
                 name: req.currentUser
             })
-            .then(results => res.json(results)) 
+            .then(results => {
+                res.json(results)
+            })
             .catch(err => res.status(500).json(err))
     })
     .post(authenticate, (req, res) => {
-        res.json({success: "user post"});
+        let updateUser = {};
+        
+        for (const prop in req.body) {
+            if (req.body[prop] !== '' && prop !== "edit") {
+                updateUser[prop] = req.body[prop];
+            }
+        }
+
+        db.User.findOneAndUpdate({
+                    name: req.currentUser
+                },
+                updateUser, {
+                    new: true
+                })
+            .then((user) => res.json(user));
     });
 //
 //route to update goal max gauge
@@ -155,10 +170,13 @@ router.route('/addpoints')
         newDailyScore.save((error, doc) => {
             if (error) {
                 res.send(error);
-            }
-            else {
+            } else {
                 db.User.findOneAndUpdate({
+<<<<<<< HEAD
                     name: currentUser
+=======
+                    _id: req.params.id
+>>>>>>> 31b3bc5566f8c78861414141bd17a37d91cf729a
                 }, {
                     $push: {
                         "dailyScores": doc._id
@@ -168,8 +186,7 @@ router.route('/addpoints')
                 }, function(err, newdoc) {
                     if (err) {
                         res.send(err);
-                    }
-                    else {
+                    } else {
                         res.send(newdoc);
                     }
                 });
@@ -249,6 +266,7 @@ router.route('/leaderboard/challenges')
 // verify login info
 router.route('/login')
     .post((req, res) => {
+        console.log(req.body);
         const username = req.body.name;
         const password = req.body.password;
         const {
@@ -315,3 +333,10 @@ router.route('/token/:id')
     });
 
 module.exports = router;
+
+// login message errors
+
+// moment.js check today's date
+// check db for score for today's date
+// if date exists, return score
+// if date doesn't exist, create new entry and return score

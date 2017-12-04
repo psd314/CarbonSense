@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../Button/Button.jsx';
 import ProfileGraph from '../ProfileGraph/ProfileGraph.jsx';
 import "./ProInfo.css"
+import axios from 'axios';
 
 class ProfileInfo extends Component {
 	state = {
@@ -13,11 +14,29 @@ class ProfileInfo extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props);
+		axios
+			.get('/user/1')
+			.then((res) => {
+				this.setState({
+					image: res.data[0].image,
+					gender: res.data[0].gender,
+					name: res.data[0].name,
+					location: res.data[0].location,
+				})
+			});
 	}
 
 	handleEdit = (e) => {		
 		this.setState({edit: true});
+	}
+
+	handleInputChange = (event) => {
+		const value = event.target.value;
+	    const name = event.target.name;
+
+	    this.setState({
+	      [name]: value
+	    });
 	}
 
 	handleSubmit = (e) => {
@@ -26,11 +45,20 @@ class ProfileInfo extends Component {
 		this.setState({
 			edit: false
 		});
-			
+		axios
+			.post('/user/1', this.state)
+			.then((res) => {
+				this.setState({
+					name: res.data.name,
+					image: res.data.image,
+					location: res.data.location,
+					gender: res.data.gender					
+					})
+			});
+			console.log('state', this.state);
 	}
 
 	render() {
-
 		return(
 			<div className="row">
 				<div className="col-8 offset-2">
@@ -42,15 +70,13 @@ class ProfileInfo extends Component {
 										{ this.state.edit ?
 											<div className="input-group">
 											  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
-											  	value={this.props.src}
-											  	onChange={event => {
-											  		this.setState({ image: event.target.value})}
-											  	}					
+											  	value={this.state.image}
+											  	onChange={this.handleInputChange}			
 											  	name="image"	
 											  	type="text"										 
 											  	/>
 											</div>
-											: <img style={{width: 200}} alt={this.props.src} src={this.props.src}/>
+											: <img style={{width: 200}} alt="profile photo" src={this.state.image}/>
 										}
 									</div>
 								</div>
@@ -59,36 +85,36 @@ class ProfileInfo extends Component {
 										this.state.edit ? 
 											<div className="input-group">
 											  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
-											  	value={this.props.username}
-											  	onChange={event => this.setState({ name: event.target.value })}					
+											  	value={this.state.name}
+											  	onChange={this.handleInputChange}					
 											  	name="name"	
 											  	/>
 											</div> 
-											: this.props.username}
+											: this.state.name}
 									</div>
 									<div>Location: { 
 										this.state.edit ? 
 											<div className="input-group">
 											  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
-											  	value={this.props.location}
-											  	onChange={event => this.setState({location: event.target.value})}					
+											  	value={this.state.location}
+											  	onChange={this.handleInputChange}				
 											  	name="location"	
 											  	type="text"										 
 											  	/>
 											</div> 
-											: this.props.location}
+											: this.state.location}
 									</div>
 									<div>Gender: { 
 										this.state.edit ? 
 											<div className="input-group">
 											  <input type="text" className="form-control" placeholder="" aria-describedby="basic-addon1" 
-											  	value={this.props.gender}
-											  	onChange={event => this.setState({gender: event.target.value})}					
+											  	value={this.state.gender}
+											  	onChange={this.handleInputChange}					
 											  	name="gender"	
 											  	type="text"										 
 											  	/>
 											</div> 
-											: this.props.gender}
+											: this.state.gender}
 									</div>
 									<p>Success Streak: {this.props.successStreak}</p>
 									<p>Challenge Score: {this.props.challengeScore}</p>
