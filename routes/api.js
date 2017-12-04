@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import config from '../config/config.js';
 import authenticate from '../middleware/validateToken.js';
+import moment from 'moment';
 const router = require('express').Router();
 const db = require('../models');
 const DailyScore = require('../models/Score.js');
@@ -112,34 +113,42 @@ router.route('/user/:id')
     });
 //
 //route to update goal max gauge
-router.route('/gaugeTarget/:id')
-    .put((req, res) => {
+router.route('/gaugeTarget')
+    .put(authenticate,(req, res) => {
         db.User
             .findOneAndUpdate({
-                _id: req.params.id
+                name: req.currentUser
             }, {
                 $set: {
-                    gaugeTarget: req.params.gaugeTarget
+                    gaugeTarget: req.body.gaugeTarget
                 }
-            })
+            }, {
+                new: true 
+            } )
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     })
 
 //route to get max gauge number
-router.route('/gaugeTarget/:id')
-    .get((req, res) => {
+router.route('/gaugeTarget')
+    .get(authenticate, (req, res) => {
+        console.log('req.currentUser:', req.currentUser);
         db.User
-            .findById({
-                _id: req.params.id
+            .findOne({
+                name: req.currentUser
             })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     });
 
+// moment.js check today's date
+// check db for score for today's date
+// if date exists, return score
+// if date doesn't exist, create new entry and return score
+
 //route to add daily points to the user's profile
-router.route('/addpoints/:id')
-    .post((req, res) => {
+router.route('/addpoints')
+    .post(authenticate, (req, res) => {
 
         const newDailyScore = new DailyScore(req.body);
 
@@ -149,7 +158,7 @@ router.route('/addpoints/:id')
             }
             else {
                 db.User.findOneAndUpdate({
-                    _id : req.params.id
+                    name: currentUser
                 }, {
                     $push: {
                         "dailyScores": doc._id

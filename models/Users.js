@@ -11,20 +11,24 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     birthday: {
-        type: Date
+        type: Date,
+        default: 1/1/1980
     }, 
     gender: {
-        type: String
+        type: String,
+        default: "Rather not say"
     },
     location: {
-        type: String
+        type: String,
+        default: "not specified"
     },
     image: {
-        type: String
+        type: String,
+        default: "no image"
     },
     gaugeTarget: {
         type: Number,
-        defualt: 100
+        default: 100
     }, 
     dailyScores: [{
         type: Schema.Types.ObjectId,
