@@ -163,8 +163,9 @@ router.route('/gaugeTarget')
 
 //route to add daily points to the user's profile
 router.route('/addpoints')
-    .post(authenticate, (req, res) => {
-
+    .post((req, res) => {
+        const now = moment().format('MM-DD-YYYY'); 
+        console.log(now)
         const newDailyScore = new DailyScore(req.body);
 
         newDailyScore.save((error, doc) => {
