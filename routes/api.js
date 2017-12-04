@@ -290,7 +290,10 @@ router.route('/login')
                         res.status(400).json(errors);
                     }
                 })
-                .catch(err => res.status(500).json(err))
+                .catch(errors => {
+                    errors.errors = "Email or password is incorrect";
+                    res.status(500).json(errors)
+                });
         } else {
 
             res.status(401).json(errors);
