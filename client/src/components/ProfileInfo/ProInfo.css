@@ -5,8 +5,11 @@
 	color: #000000;
 	font-family: 'Dosis', sans-serif;
 	font-size: 28pt;
+}
 
-
+.row2 {
+	margin-bottom: 60px !important;
+	
 }
 
 .container-box {
