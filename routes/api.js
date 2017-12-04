@@ -172,11 +172,7 @@ router.route('/addpoints')
                 res.send(error);
             } else {
                 db.User.findOneAndUpdate({
-<<<<<<< HEAD
                     name: currentUser
-=======
-                    _id: req.params.id
->>>>>>> 31b3bc5566f8c78861414141bd17a37d91cf729a
                 }, {
                     $push: {
                         "dailyScores": doc._id
