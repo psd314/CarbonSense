@@ -29,29 +29,19 @@ componentDidMount() {
 >>>>>>> c5f63f8dfe5f43a9af89a7a3527e803566dc2e7d
 	}
 
-
-
 	render() {
 		return(
-<div className="container-fluid well span6">
-	<div className="row-fluid">
-        
-        <div className="span8">
-            <ProfileInfo 
-            		alttext={this.state.user.name}
-					src={this.state.user.image}
-					username={this.state.user.name}
-					location={this.state.user.location}
-					gender={this.state.user.gender}
-					successStreak={this.state.user.successStreak}
-					challengeScore={this.state.user.challengeScore}
-            />
-
-        </div>
-        
-        
-	</div>
-</div>
+			<div className="container-fluid well span6">
+				<div className="row-fluid">        
+			        <div className="span8">
+			            <ProfileInfo 
+			            		alttext={this.state.user.name}
+								successStreak={this.state.user.successStreak}
+								challengeScore={this.state.user.challengeScore}
+			            />
+			        </div>       
+				</div>
+			</div>
 		);
 	}
 }
