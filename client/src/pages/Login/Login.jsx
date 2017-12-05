@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { login } from '../../actions/loginRequest.js';
+import "./login.css"
 
 class Login extends Component {
 
@@ -30,7 +31,7 @@ class Login extends Component {
 	render() {
 		const { errors } = this.state;
 		return(
-			<div>
+			<div style={{ marginBottom: 190}}>
 				<div style={{ paddingTop: 150, paddingBottom: 30}}>
 				    <div className="row">
 				    	<div className="col-4 offset-4">

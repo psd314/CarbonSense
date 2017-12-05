@@ -2,7 +2,7 @@
 	
 	margin-left: 100px;
 	padding: 20px 20px 30px 20px;
-	color: #000000;
+	color: white;
 	font-family: 'Dosis', sans-serif;
 	font-size: 28pt;
 }
@@ -13,8 +13,8 @@
 }
 
 .container-box {
-	background: white;
-	border: 5px  solid white ;
+	background: black;
+	border: 5px  solid black ;
 	border-radius: 10px;
 	margin-top: 125px;
 
@@ -25,8 +25,13 @@
 }
 
 .profile-word {
-	color: #000000;
+	color: white;
 	font-family: 'Dosis', sans-serif;
 	font-size: 45pt;
 	font-weight: bolder;
+}
+
+.btn-edit {
+	background-color: #28a745;
+	color: black; 
 }

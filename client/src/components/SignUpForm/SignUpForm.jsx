@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import "./SignUpForm.css"
 
 class SignUpForm extends Component {
 	
 	
 	render() {
 		return(
-			<div style={{paddingTop: 150, color: "white"}}>
+			<div style={{paddingTop: 150, color: "white", marginBottom: 110}}>
 				<h1>Sign Up</h1>
 
 				<form>
@@ -44,7 +45,7 @@ class SignUpForm extends Component {
 				    	name="confirmPassword"/>
 				  </div>			 
 				</form>
-		    	<button onClick={this.props.handleFormSubmit} className="btn btn-lg btn-warning">Sign Up</button>
+		    	<button onClick={this.props.handleFormSubmit} className="btn btn-lg btn-warning btn-signUp">Sign Up</button>
 			</div>
 		);
 	}

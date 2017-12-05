@@ -21,7 +21,7 @@ class ProfileInfo extends Component {
 									<p>Gender: {this.props.gender}</p>
 									<p>Success Streak: {this.props.successStreak}</p>
 									<p>Challenge Score: {this.props.challengeScore}</p>
-									<Button buttonName="Edit" />
+									<Button buttonName="Edit" className="editButton" />
 								</div>
 						</div>
 					</div>		

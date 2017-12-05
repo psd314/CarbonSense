@@ -10,9 +10,7 @@
 	background: transparent;
 	width: 98%;
 	border-bottom: 3px solid white;
-	background-image: url(https://i.ytimg.com/vi/jNT3O4NlSTo/maxresdefault.jpg);
- 	background-repeat: no-repeat;
-    background-attachment: fixed;
+	background: transparent;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -41,8 +39,8 @@
 } 
 
 .btn3 {
-	color: #000000;
-	background-color: #0636FF;
+	color: white;
+	background-color: #000000;
 	font-family: 'Dosis', sans-serif;
 	font-size: 22pt;
 	width: 100%;
