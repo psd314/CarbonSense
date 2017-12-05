@@ -8,24 +8,22 @@ import axios from "axios";
  
 class ProfileGraph extends Component {
     state = {
-        value: 50
+        value: 1,
+        gaugeTarget: 0
     };
     startColor = '#000000'; // cornflowerblue
     endColor = '#000000'; // crimson
 
 
-    // componentDidMount() {
-    //         this.loadScore();
-    //     }
 
-    // loadScore = () => {	
-    //     axios.get("")
-    //             .then(res => {
-    //                 this.setState({ value: res.data })
-    //                 console.log(value)
-    //             })
-    //             .catch(err => console.log(err));
-    //         }
+    updateGaugeTarget = () => {
+        axios.put("/gaugeTarget")
+            .then(res => {
+                this.setState({ gaugeTarget: res.data.gaugeTarget });
+                console.log("results", this.state.gaugeTarget);
+            })
+            .catch(err => console.log(err));
+    }
 
  
     render() {
@@ -60,12 +58,14 @@ class ProfileGraph extends Component {
         ];
  
         return (
+
             <div className="DashboardGraph" style={{marginBottom:150}}>
+                <h1>Max Carbon Points: {this.state.gaugeTarget}</h1>
                 <LiquidFillGauge
                     style={{ margin: '0 auto' }}
                     width={radius * 2}
                     height={radius * 2}
-                    value={this.state.value}
+                    value={this.props.value}
                     percent="%"
                     textSize={1}
                     textOffsetX={0}
@@ -108,9 +108,9 @@ class ProfileGraph extends Component {
                         fill: color('#ff0000').toString(),
                         fontFamily: 'Arial'
                     }}
-                    onClick={() => {
+                    /*onClick={() => {
                         this.setState({ value: Math.random() * 100 });
-                    }}
+                    }}*/
                 />
                 <div
                     style={{

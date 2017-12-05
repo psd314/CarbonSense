@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 
 const dailyScoreSchema = new mongoose.Schema({
     date: {
-        type: Date, 
+        type: String, 
         // required: true
     },
     score: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     }
 }); 
 

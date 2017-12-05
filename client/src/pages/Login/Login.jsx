@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { login } from '../../actions/loginRequest.js';
 import "./login.css"
@@ -24,8 +23,9 @@ class Login extends Component {
 			this.setState({errors: {name:"Logging in..."}});
 			setTimeout(() => { this.props.history.push('/dashboard')}, 1500);
 			},
-			(err) => { this.setState({errors: err.response.data}) }
-		);
+			(err) => { 
+				this.setState({errors: err.response.data}) 
+		});
 	}
 
 	render() {
