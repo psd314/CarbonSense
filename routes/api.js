@@ -111,7 +111,7 @@ router.route('/user/:id')
     })
     .post(authenticate, (req, res) => {
         let updateUser = {};
-        
+
         for (const prop in req.body) {
             if (req.body[prop] !== '' && prop !== "edit") {
                 updateUser[prop] = req.body[prop];
@@ -129,7 +129,7 @@ router.route('/user/:id')
 //
 //route to update goal max gauge
 router.route('/gaugeTarget')
-    .put(authenticate,(req, res) => {
+    .put(authenticate, (req, res) => {
         db.User
             .findOneAndUpdate({
                 name: req.currentUser
@@ -138,8 +138,8 @@ router.route('/gaugeTarget')
                     gaugeTarget: req.body.gaugeTarget
                 }
             }, {
-                new: true 
-            } )
+                new: true
+            })
             .then(results => res.json(results))
             .catch(err => res.status(500).json(err))
     })
@@ -156,53 +156,110 @@ router.route('/gaugeTarget')
             .catch(err => res.status(500).json(err))
     });
 
-// moment.js check today's date
-// check db for score for today's date
-// if date exists, return score
-// if date doesn't exist, create new entry and return score
+router.route('/currentScore')
+    .get(authenticate, (req, res) => {
+        const now = moment().format('MM-DD-YYYY');
+        db.User.findOne({
+                name: req.currentUser,
+                "dailyScores.date": now
+            })
+            .then(results => {
+                if (results === null) {
+                    res.json({
+                        score: 0
+                    });
+                } else {
+                    const currentScore = results.dailyScores.find(function(obj) {
+                        return obj.date === now;
+                    });
+                    res.json(currentScore);
+                }
+            })
+            .catch(error => res.status(500).json(error));
+    });
 
 //route to add daily points to the user's profile
 router.route('/addpoints')
     .post(authenticate, (req, res) => {
-        const now = moment().format('MM-DD-YYYY'); 
-        // console.log('now:', now);
-        // console.log('body:', req.body);
-        console.log('current:', req.currentUser);
+        const now = moment().format('MM-DD-YYYY');
 
-        // upsert if date doesn't exist, update otherwise
-        // respond with new score
-
-        // db.User.findOne({name: req.currentUser})
-        //     .then( (res) => console.log(res));
-
-        const newDailyScore = new DailyScore({date: now, score: req.body.score});
-        // console.log(newDailyScore);
-        newDailyScore.save((error, doc) => {
-
-            if (error) {
-                res.send(error);
-            } else {
-                db.User.findOneAndUpdate({
-                    name: req.currentUser
-                }, {
-                    $push: {
-                        "dailyScores": doc
+        // if date doesn't exist, add new date/score to dailyScores []
+        db.User.findOneAndUpdate({
+                name: req.currentUser,
+                dailyScores: {
+                    $not: {
+                        '$elemMatch': {
+                            'date': now
+                        }
                     }
-                }, {
-                    new: true
-                }, function(err, newdoc) {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        res.send(newdoc);
+                }
+            }, {
+                $addToSet: {
+                    dailyScores: {
+                        date: now,
+                        score: req.body.score
                     }
-                });
-            }
-        });
+                }
+            }, {
+                new: true
+            })
+            .then(results => {
+                // if null, date already exists, update score for specific date 
+                if (results === null) {
+                    db.User.findOneAndUpdate({
+                            name: req.currentUser,
+                            "dailyScores.date": now
+                        }, {
+                            $set: {
+                                "dailyScores.$.score": req.body.score
+                            }
+                        }, {
+                            new: true
+                        })
+                        .then(user => {
+                            const currentScore = user.dailyScores.find(function(obj) {
+                                return obj.date === now;
+                            });
+                            res.json(currentScore);
+                        });
+                } else {
+                    // if !null, pass new entry back
+                    const currentScore = results.dailyScores.find(function(obj) {
+                        return obj.date === now;
+                    });
+                    res.json(currentScore);
+                }
+            })
+            .catch(error => res.json(error));
 
-        res.json({
-            success: true
-        });
+        // const newDailyScore = new DailyScore({date: now, score: req.body.score});
+        // // console.log(newDailyScore);
+        // newDailyScore.save((error, doc) => {
+
+        //     if (error) {
+        //         res.send(error);
+        //     } else {
+        //         db.User.findOneAndUpdate({
+        //             name: req.currentUser
+        //         }, {
+        //             $push: {
+        //                 "dailyScores": doc
+        //             }
+        //         }, {
+        //             new: true
+        //         }, function(err, newdoc) {
+        //             if (err) {
+        //                 res.send(err);
+        //             } else {
+        //                 res.send(newdoc);
+        //             }
+        //         });
+        //     }
+        // });
+
+        // res.json({
+        //     success: true
+        // });
     });
 
 //route to get the daily challenge for push notifications (?)
@@ -329,24 +386,4 @@ router.route('/subscriptions')
                 });
     });
 
-// prototype route for validating user on all routes
-// attached to Temp Btn
-router.route('/token/:id')
-    .get(authenticate, (req, res) => {
-
-        res.status(201).json({
-            success: true
-        });
-    })
-    .post((req, res) => {
-        console.log(req.body);
-    });
-
 module.exports = router;
-
-// login message errors
-
-// moment.js check today's date
-// check db for score for today's date
-// if date exists, return score
-// if date doesn't exist, create new entry and return score

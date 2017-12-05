@@ -9,19 +9,19 @@ state = {
 		currentScore: 0
 	}
 
-// componentDidMount() {
-// 		this.loadScore();
-// 	}
-
-
-// loadScore = () => {	
-// 	axios.post("")
-// 			.then(res => {
-// 				this.setState({ currentScore: res.data })
-// 				console.log(currentScore)
-// 			})
-// 			.catch(err => console.log(err));
-// 		}
+ componentWillMount() {
+  		this.loadScore();
+  	}
+ 
+ 
+  loadScore = () => {	
+  	axios.get("/currentScore")
+  			.then(res => {
+  				this.setState({ currentScore: res.data.score })
+  				console.log('on load:', this.state);
+  			})
+  			.catch(err => console.log(err));
+  		}
 
 	handleOnClick = (event) => {
 		event.preventDefault();
@@ -44,6 +44,11 @@ state = {
 
 		axios
 			.post('/addpoints', {score: newScore})
+			.then(res => {
+  				this.setState({ currentScore: res.data.score })
+  				console.log('on click:', this.state);
+  			})
+  			.catch(err => console.log(err));
 	}
 
 	render() {
@@ -173,7 +178,7 @@ state = {
   						</div>
   					<div>
   						
-						<DashboardGraph/>
+						<DashboardGraph value={this.state.currentScore}/>
 
 					</div>
 				</div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '../Button/Button.jsx';
-import ProfileGraph from '../ProfileGraph/ProfileGraph.jsx';
 import "./ProInfo.css"
 import axios from 'axios';
 
@@ -75,7 +74,7 @@ class ProfileInfo extends Component {
 											  	type="text"										 
 											  	/>
 											</div>
-											: <img style={{width: 200}} alt="profile" src={this.state.image}/>
+											: <img style={{width: 200}} alt="profile pic" src={this.state.image}/>
 										}
 									</div>
 								</div>
