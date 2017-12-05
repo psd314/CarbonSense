@@ -34,6 +34,7 @@ class Leaderboard extends Component {
 							{this.state.leaders.map( (result, index) => {
 								return (
 									<LeaderboardTableRow
+										key={index + 1}
 										index={index + 1}
 										name={result.name}
 										location={result.location}
