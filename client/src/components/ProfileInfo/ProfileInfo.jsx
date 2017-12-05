@@ -116,9 +116,11 @@ class ProfileInfo extends Component {
 									</div>
 									<p>Success Streak: {this.props.successStreak}</p>
 									<p>Challenge Score: {this.props.challengeScore}</p>
+
 									<Button 
 										buttonName={this.state.edit ? "Submit" : "Edit"} 
 										onClick={this.state.edit ? this.handleSubmit : this.handleEdit} />
+
 								</div>
 						</div>
 					</div>		

@@ -1,5 +1,5 @@
 .navbar-brand {
-	color: #94f229;
+	color: white;
 	font-family: 'Dosis', sans-serif;
 	font-size: 28pt;
 	
@@ -16,7 +16,7 @@
 
 .btn {
 	margin-right: 15px;
-	color: black;
+	color: white;
 	font-family: 'Dosis', sans-serif;
 	font-size: 16pt;
 	border-color: 
@@ -28,4 +28,8 @@
 	z-index: 10;
 	top: 0;
 
+}
+
+.navbar {
+	color: white;
 }

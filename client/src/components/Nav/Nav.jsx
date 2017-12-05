@@ -29,7 +29,7 @@ class Nav extends Component {
 
 
 		return (
-		<nav className="navbar navbar-expand-lg" id="nav" style={{ backgroundColor: "#0636FF"}}>
+		<nav className="navbar navbar-expand-lg" id="nav" style={{ backgroundColor: "#000000"}}>
   			<a className="navbar-brand mr-auto">CarbonSense</a>
  		 	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     			<span className="navbar-toggler-icon"></span>
