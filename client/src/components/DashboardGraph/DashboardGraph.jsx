@@ -9,7 +9,7 @@ import axios from "axios";
 class ProfileGraph extends Component {
     state = {
         value: 1,
-        gaugeTarget: 0
+        gaugeTarget: 100
     };
     startColor = '#000000'; // cornflowerblue
     endColor = '#000000'; // crimson
