@@ -27,6 +27,7 @@
     "homepage": "https://github.com/psd314/carbonTrack#readme",
     "dependencies": {
         "axios": "^0.17.1",
+        "babel": "^6.23.0",
         "bcrypt": "^1.0.3",
         "body-parser": "^1.18.2",
         "d3-color": "^1.0.3",
