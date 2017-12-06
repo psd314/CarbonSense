@@ -6,8 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "seed": "node scripts/seedDB.js && node scripts/userseedDB.js",
-        "babel-node": "babel-node --presets es2015,stage-2",
-        "start": "nodemon --exec npm run babel-node -- ./server.js",
+        "start": "nodemon ./server.js",
         "build": "babel src -d dist"
     },
     "repository": {
