@@ -18,7 +18,7 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/carbonsensedb" || "mongodb://heroku_1nql9ckg:suvfcktps2gv80vf0khalm987t@ds131826.mlab.com:31826/heroku_1nql9ckg",
+  process.env.MONGODB_URI || "mongodb://localhost/carbonsensedb" || "mongodb://heroku_jnd2j9pd:36sajppb5e2mj0o6jlhkge2l41@ds131826.mlab.com:31826/heroku_jnd2j9pd",
   {
     useMongoClient: true
   }
