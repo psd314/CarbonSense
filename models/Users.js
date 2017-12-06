@@ -16,15 +16,15 @@ const userSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        default: "Rather not say"
+        default: ""
     },
     location: {
         type: String,
-        default: "not specified"
+        default: ""
     },
     image: {
         type: String,
-        default: "no image"
+        default: ""
     },
     gaugeTarget: {
         type: Number,
