@@ -54,18 +54,20 @@ state = {
 	render() {
 		return(
 			<div className="Container" style={{marginBottom:250}}>
+
 				<div className="col-8">
 					<div className="Head">
 						<h1>Dashboard</h1>
 						<h4>Let's see how you've been being green!</h4>
 					</div>
 				</div>
+				
 				<div>
 					
 				</div>
+
 					<div className="row">
-						<div className="col-4 offset-1 question-col">
-														
+						<div className="col-4 offset-1 question-col">														
 
 							<div className="form-group">
 							<h1 className="questions">Transportation</h1>						  
