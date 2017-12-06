@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
-import config from '../config/config.js';
+const jwt = require('jsonwebtoken');
+const config = require('../config/config.js');
 const db = require('../models');
 
-export default (req, res, next) => {
+module.exports = (req, res, next) => {
     const authorizationHeader = req.headers['authorization'];
     let token;
 

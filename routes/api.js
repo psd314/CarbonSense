@@ -53,6 +53,7 @@ function validateLogin(data) {
     }
 }
 
+
 router.route('/challenges')
     .get((req, res) => {
 
