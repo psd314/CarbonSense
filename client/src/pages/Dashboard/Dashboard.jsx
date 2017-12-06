@@ -18,7 +18,7 @@ state = {
   	axios.get("/currentScore")
   			.then(res => {
   				this.setState({ currentScore: res.data.score })
-  				console.log('on load:', this.state);
+  				console.log('on load:', this.state); 
   			})
   			.catch(err => console.log(err));
   		}
