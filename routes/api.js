@@ -330,7 +330,6 @@ router.route('/leaderboard/challenges')
 // verify login info
 router.route('/login')
     .post((req, res) => {
-        console.log(req.body);
         const username = req.body.name;
         const password = req.body.password;
         const {
