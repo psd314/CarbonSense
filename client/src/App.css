@@ -23,7 +23,8 @@
 }
 
 body {
-  background-image: url(http://www.wallcoo.net/human/SZ_206_Entironment_03_city_Photo_manipulation/wallpapers/1920x1200/Photo%20manipulation%20of%2003_Human%20and%20Green%20064_Greeny_Nature.jpg);
+  background-image: url('images/background.jpg');
+  /*background-image: url(http://www.wallcoo.net/human/SZ_206_Entironment_03_city_Photo_manipulation/wallpapers/1920x1200/Photo%20manipulation%20of%2003_Human%20and%20Green%20064_Greeny_Nature.jpg);*/
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
