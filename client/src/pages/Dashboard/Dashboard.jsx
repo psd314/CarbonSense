@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DashboardGraph from "../../components/DashboardGraph/DashboardGraph.jsx";
 import "./dashboard.css";
-import axios from "axios";
+import axios from "axios"; 
 
 
 class Dashboard extends Component {
