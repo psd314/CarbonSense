@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "../../components/DashboardHeader/DashboardHeader.jsx"
 import DashboardGraph from "../../components/DashboardGraph/DashboardGraph.jsx";
 import "./dashboard.css";
 import axios from "axios"; 
@@ -54,17 +55,7 @@ state = {
 	render() {
 		return(
 			<div className="Container" style={{marginBottom:250}}>
-
-				<div className="col-8">
-					<div className="Head">
-						<h1>Dashboard</h1>
-						<h4>Let's see how you've been being green!</h4>
-					</div>
-				</div>
-				
-				<div>
-					
-				</div>
+				<Header/>
 
 					<div className="row">
 						<div className="col-4 offset-1 question-col">														
@@ -162,7 +153,7 @@ state = {
 							<div className="form-group">
 							<h1 className="questions">Entertainment</h1>							  
 							    <select className="form-control" id='quest10'>
-									<option value="0">I disconnected and read a book or got outside or something similare</option>
+									<option value="0">I disconnected and read a book or got outside or something similar</option>
 							    <option value="5">I spend several hours on Netflix or playing video games</option>
 							    <option value="10">I went to a movie and had snacks from a disposable container</option>
 							  	</select>						
