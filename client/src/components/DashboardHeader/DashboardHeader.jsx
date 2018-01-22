@@ -1,7 +1,7 @@
 import React from 'react'; 
 
 const Header = () => (
-    <div>
+    <div className="headerWrapper">
         <div className="col-8">
             <div className="Head">
                 <h1>Dashboard</h1>
