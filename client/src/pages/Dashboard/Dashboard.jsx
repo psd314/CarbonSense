@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Header from "../../components/DashboardHeader/DashboardHeader.jsx"
+import Header from "../../components/DashboardHeader/DashboardHeader.jsx";
 import DashboardGraph from "../../components/DashboardGraph/DashboardGraph.jsx";
+import Question from "../../components/DashboardQuestion/DashboardQuestion.jsx";
 import "./dashboard.css";
 import axios from "axios"; 
 
@@ -56,11 +57,17 @@ state = {
 		return(
 			<div className="Container" style={{marginBottom:250}}>
 				<Header/>
-
+				
 					<div className="row">
 						<div className="col-4 offset-1 question-col">														
-
-							<div className="form-group">
+								<Question 
+								questionTitle="Spaghetti"
+								option1="Option1"
+								option2="Option2"
+								option3="Option3"
+								option4="Option4"
+								/>
+							{/* <div className="form-group">
 							<h1 className="questions">Transportation</h1>						  
 							    <select className="form-control" id="quest1">
 									<option value="1">100% Walk/Bike/Public Transit</option>
@@ -68,15 +75,15 @@ state = {
 							    <option value="10">Carpool or drove less than 10 miles</option>
 							    <option value="15">Drove my car 10+ miles</option>
 							  	</select>								
-							</div>
+							</div> */}
 
 							<div className="form-group">
 							<h1 className="questions">Eating</h1>							  
 							    <select className="form-control" id='quest2'>
 										<option value="1">I ate only Vegan/Vegetarian or from local organic farms</option>
 										<option value="5">I ate some meat, and most stuff was local or organic</option>
-										<option value="10">I at mostly conventional or processed foods</option>
-										<option value="15">I indulged in fast food and it was great!</option>
+										<option value="10">I ate mostly conventional or processed foods</option>
+										<option value="15">I ate fast food</option>
 							  	</select>
 															 
 							<div className="form-group">
