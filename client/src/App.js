@@ -17,20 +17,23 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <Router>
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Login} /> 
-            <Route exact path="/dashboard" component={Authenticate(Dashboard)} />
-            <Route exact path="/leaderboard" component={Authenticate(Leaderboard)} /> 
-            <Route exact path="/profile" component={Authenticate(Profile)} /> 
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/admin" component={Admin} /> 
-            <Route component={Login} />       
-          </Switch>
-          
-        </Router>
-        <Footer />
+        <div className="wrapper">
+          <Router>
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Login} /> 
+              <Route exact path="/dashboard" component={Authenticate(Dashboard)} />
+              <Route exact path="/leaderboard" component={Authenticate(Leaderboard)} /> 
+              <Route exact path="/profile" component={Authenticate(Profile)} /> 
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/admin" component={Admin} /> 
+              <Route component={Login} />       
+            </Switch>          
+          </Router>
+        </div>
+        <div className="footerWrap">
+          <Footer />
+        </div>
       </div>
     );
   }
